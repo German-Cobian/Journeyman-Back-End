@@ -1,0 +1,2 @@
+class Journeyman < ApplicationRecord
+end

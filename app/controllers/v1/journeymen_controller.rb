@@ -1,4 +1,5 @@
 class V1::JourneymenController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     render json: Journeyman.all.to_json

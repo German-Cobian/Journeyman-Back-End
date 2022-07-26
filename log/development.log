@@ -718,3 +718,183 @@ Processing by V1::ReservationsController#index as JSON
 Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1313)
 
 
+Started GET "/v1/journeymen" for ::1 at 2022-07-26 12:28:43 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::JourneymenController#index as JSON
+  [1m[36mJourneyman Load (0.7ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen"[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:4:in `index'
+Completed 200 OK in 305ms (Views: 4.6ms | ActiveRecord: 5.2ms | Allocations: 12095)
+
+
+Started POST "/v1/journeymen" for 127.0.0.1 at 2022-07-26 12:34:20 -0700
+Processing by V1::JourneymenController#create as JSON
+  Parameters: {"id"=>5, "name"=>"Glibby", "skill"=>"masonry", "country"=>"Argentina", "city"=>"Cordoba", "price"=>"70.0", "journeyman_pic"=>"therePic123", "journeyman"=>{"id"=>5, "name"=>"Glibby", "skill"=>"masonry", "country"=>"Argentina", "city"=>"Cordoba", "price"=>"70.0", "journeyman_pic"=>"therePic123"}}
+[31mUnpermitted parameter: :id. Context: { controller: V1::JourneymenController, action: create, request: #<ActionDispatch::Request:0x000000010d718730>, params: {"id"=>5, "name"=>"Glibby", "skill"=>"masonry", "country"=>"Argentina", "city"=>"Cordoba", "price"=>"70.0", "journeyman_pic"=>"therePic123", "format"=>"json", "controller"=>"v1/journeymen", "action"=>"create", "journeyman"=>{"id"=>5, "name"=>"Glibby", "skill"=>"masonry", "country"=>"Argentina", "city"=>"Cordoba", "price"=>"70.0", "journeyman_pic"=>"therePic123"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:20:in `create'
+  [1m[36mJourneyman Create (0.8ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Glibby"], ["skill", "masonry"], ["country", "Argentina"], ["city", "Cordoba"], ["price", "70.0"], ["journeyman_pic", "therePic123"], ["created_at", "2022-07-26 19:34:20.982986"], ["updated_at", "2022-07-26 19:34:20.982986"]]
+  ↳ app/controllers/v1/journeymen_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (301.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:20:in `create'
+Completed 200 OK in 310ms (Views: 0.1ms | ActiveRecord: 302.4ms | Allocations: 3246)
+
+
+Started GET "/v1/journeymen" for ::1 at 2022-07-26 12:34:39 -0700
+Processing by V1::JourneymenController#index as JSON
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen"[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1360)
+
+
+Started DELETE "/v1/journeymen/4" for 127.0.0.1 at 2022-07-26 12:35:00 -0700
+Processing by V1::JourneymenController#destroy as JSON
+  Parameters: {"id"=>"4", "name"=>"Glibby", "skill"=>"masonry", "country"=>"Argentina", "city"=>"Cordoba", "price"=>"70.0", "journeyman_pic"=>"therePic123", "journeyman"=>{"id"=>"4", "name"=>"Glibby", "skill"=>"masonry", "country"=>"Argentina", "city"=>"Cordoba", "price"=>"70.0", "journeyman_pic"=>"therePic123"}}
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/v1/journeymen_controller.rb:28:in `destroy'
+Completed 500 Internal Server Error in 717ms (ActiveRecord: 0.4ms | Allocations: 4738)
+
+
+  
+NameError (undefined local variable or method `reservation' for #<V1::JourneymenController:0x000000000094e8>
+
+      reservation.destroy
+      ^^^^^^^^^^^
+Did you mean?  reset_session):
+  
+app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Started DELETE "/v1/journeymen/4" for 127.0.0.1 at 2022-07-26 12:35:19 -0700
+Processing by V1::JourneymenController#destroy as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/v1/journeymen_controller.rb:28:in `destroy'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.3ms | Allocations: 2900)
+
+
+  
+NameError (undefined local variable or method `reservation' for #<V1::JourneymenController:0x00000000009560>
+
+      reservation.destroy
+      ^^^^^^^^^^^
+Did you mean?  reset_session):
+  
+app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Started DELETE "/v1/journeymen/2" for 127.0.0.1 at 2022-07-26 12:35:28 -0700
+Processing by V1::JourneymenController#destroy as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mJourneyman Load (31.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/journeymen_controller.rb:28:in `destroy'
+Completed 500 Internal Server Error in 64ms (ActiveRecord: 31.2ms | Allocations: 2896)
+
+
+  
+NameError (undefined local variable or method `reservation' for #<V1::JourneymenController:0x00000000009600>
+
+      reservation.destroy
+      ^^^^^^^^^^^
+Did you mean?  reset_session):
+  
+app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Started DELETE "/v1/journeymen/4" for 127.0.0.1 at 2022-07-26 12:36:19 -0700
+Processing by V1::JourneymenController#destroy as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mJourneyman Load (0.6ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/v1/journeymen_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Load (0.6ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."journeyman_id" = $1[0m  [["journeyman_id", 4]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Completed 500 Internal Server Error in 492ms (ActiveRecord: 74.7ms | Allocations: 15248)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation "active_storage_attachments" does not exist
+LINE 9:  WHERE a.attrelid = '"active_storage_attachments"'::regclass
+                            ^
+):
+  
+app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Started DELETE "/v1/journeymen/4" for 127.0.0.1 at 2022-07-26 12:37:56 -0700
+Processing by V1::JourneymenController#destroy as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/v1/journeymen_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Load (0.4ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."journeyman_id" = $1[0m  [["journeyman_id", 4]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Completed 500 Internal Server Error in 200ms (ActiveRecord: 33.9ms | Allocations: 11636)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation "active_storage_attachments" does not exist
+LINE 9:  WHERE a.attrelid = '"active_storage_attachments"'::regclass
+                            ^
+):
+  
+app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Started GET "/v1/journeymen/4" for ::1 at 2022-07-26 12:38:34 -0700
+Processing by V1::JourneymenController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mJourneyman Load (0.4ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/v1/journeymen_controller.rb:8:in `show'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 871)
+
+
+Started DELETE "/v1/journeymen/2" for 127.0.0.1 at 2022-07-26 12:39:48 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::JourneymenController#destroy as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mJourneyman Load (0.4ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/journeymen_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Load (0.7ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."journeyman_id" = $1[0m  [["journeyman_id", 2]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Destroy (0.6ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Destroy (0.4ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Destroy (0.2ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Destroy (0.4ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = $1[0m  [["id", 6]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Completed 500 Internal Server Error in 544ms (ActiveRecord: 54.8ms | Allocations: 27447)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation "active_storage_attachments" does not exist
+LINE 9:  WHERE a.attrelid = '"active_storage_attachments"'::regclass
+                            ^
+):
+  
+app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Started DELETE "/v1/journeymen/2" for 127.0.0.1 at 2022-07-26 12:41:59 -0700
+Processing by V1::JourneymenController#destroy as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/journeymen_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Load (0.7ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."journeyman_id" = $1[0m  [["journeyman_id", 2]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Destroy (0.3ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Destroy (0.3ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Destroy (0.5ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Destroy (0.4ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = $1[0m  [["id", 6]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mJourneyman Destroy (1.4ms)[0m  [1m[31mDELETE FROM "journeymen" WHERE "journeymen"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Completed 200 OK in 155ms (Views: 0.2ms | ActiveRecord: 13.6ms | Allocations: 14007)
+
+

@@ -6,7 +6,6 @@ class CreateJourneymen < ActiveRecord::Migration[7.0]
       t.string :country
       t.string :city
       t.decimal :price
-      t.string :journeyman_pic
 
       t.timestamps
     end

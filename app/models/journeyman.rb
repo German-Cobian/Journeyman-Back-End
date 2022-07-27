@@ -1,6 +1,6 @@
 class Journeyman < ApplicationRecord
   has_many :reservations, dependent: :destroy
-  has_one_attached :journeyman_pic
+  has_one_attached :image
 
   validates :name, presence: true
   validates :skill, presence: true
@@ -9,7 +9,7 @@ class Journeyman < ApplicationRecord
   validates :price, presence: true
 
   def image_url
-    Rails.application.routes.url_helpers.url_for(journeyman_pic) if journeyman_pic.attached?
+    Rails.application.routes.url_helpers.url_for(image) if image.attached?
   end
 
 end

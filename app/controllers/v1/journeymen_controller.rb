@@ -1,5 +1,5 @@
 class V1::JourneymenController < ApplicationController
-  before_action :authenticate_user!
+# before_action :authenticate_user!
 
   def index
     @journeymen = Journeyman.all
@@ -41,6 +41,6 @@ class V1::JourneymenController < ApplicationController
   private
 
   def journeyman_params
-    params.require(:journeyman).permit(:name, :skill, :country, :city, :price, :journeyman_pic)
+    params.require(:journeyman).permit(:name, :skill, :country, :city, :price, :image)
   end
 end

@@ -1,8 +1,20 @@
 user_1 = User.create(username: 'GlumpPunk09', role: 1, password: '12345')
 user_1 = User.create(username: 'BillyBoy10', role: 0, password: '67890')
 
-journeyman_1 = Journeyman.create(name: 'Raul', skill: 'carpenter', country: 'Mexico', city: 'Tijuana', price: 110.0, journeyman_pic: 'thisPic123')
-journeyman_1 = Journeyman.create(name: 'Gubber', skill: 'electrician', country: 'USA', city: 'San Diego', price: 90, journeyman_pic: 'thatPic123')
+journeyman_1 = Journeyman.create(name: 'Raul', skill: 'carpenter', country: 'Mexico', city: 'Tijuana', price: 110.0)
+journeyman_1.image.attach(io: File.open("app/assets/images/carpenter.jpeg"), filename: "carpenter.jpeg")
+
+journeyman_2 = Journeyman.create(name: 'Gubber', skill: 'electrician', country: 'USA', city: 'San Diego', price: 90)
+journeyman_2.image.attach(io: File.open("app/assets/images/electrician.jpeg"), filename: "electrician.jpeg")
+
+journeyman_3 = Journeyman.create(name: 'Honey', skill: 'gardener', country: 'France', city: 'Lyon', price: 80)
+journeyman_3.image.attach(io: File.open("app/assets/images/gardener.jpeg"), filename: "gardener.jpeg")
+
+journeyman_4 = Journeyman.create(name: 'Doofus', skill: 'mason', country: 'Argentina', city: 'Cordoba', price: 70)
+journeyman_4.image.attach(io: File.open("app/assets/images/mason.jpeg"), filename: "mason.jpeg")
+
+journeyman_5 = Journeyman.create(name: 'Gubber', skill: 'plumber', country: 'Chile', city: 'Valparaiso', price: 95)
+journeyman_5.image.attach(io: File.open("app/assets/images/plumber.jpeg"), filename: "plumber.jpeg")
 
 reservation_1 = Reservation.create(user_id: 1, journeyman_id: 1, start_date: '07 Aug 2022 21:20:49.262680000', number_days: 7)
 reservation_1 = Reservation.create(user_id: 2, journeyman_id: 2, start_date: '07 Sep 2022 21:20:49.262680000', number_days: 5)

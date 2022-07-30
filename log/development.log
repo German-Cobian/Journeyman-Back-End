@@ -3948,3 +3948,649 @@ Processing by V1::ReservationsController#index as JSON
 Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 2191)
 
 
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (360.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "journeyman_back_end_development"[0m
+  [1m[35m (351.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "journeyman_back_end_test"[0m
+  [1m[35m (2214.3ms)[0m  [1m[35mCREATE DATABASE "journeyman_back_end_development" ENCODING = 'unicode'[0m
+  [1m[35m (107.1ms)[0m  [1m[35mCREATE DATABASE "journeyman_back_end_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (167.6ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_variant_records" CASCADE[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "journeymen" CASCADE[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "journeymen" ("id" bigserial primary key, "name" character varying, "skill" character varying, "country" character varying, "city" character varying, "price" decimal, "journeyman_pic" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "reservations" CASCADE[0m
+  [1m[35m (24.0ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" bigserial primary key, "start_date" date, "number_days" integer, "cost" decimal, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint, "journeyman_id" bigint)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_journeyman_id" ON "reservations" ("journeyman_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "role" integer, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "jti" character varying NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_jti" ON "users" ("jti")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (2.4ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "active_storage_variant_records" ADD CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_176dba0b83"
+FOREIGN KEY ("journeyman_id")
+  REFERENCES "journeymen" ("id")
+[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_48a92fce51"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220727192014)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220725230321),
+(20220726162935),
+(20220726163618),
+(20220726164058),
+(20220726203727),
+(20220726211239);
+
+[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-07-30 20:51:50.363008"], ["updated_at", "2022-07-30 20:51:50.363008"]]
+  [1m[36mTRANSACTION (40.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "e9b8fe64fd37ff26027cf4731a45937c0c7e821c"], ["created_at", "2022-07-30 20:51:50.429542"], ["updated_at", "2022-07-30 20:51:50.429542"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (47.2ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (22.0ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_variant_records" CASCADE[0m
+  [1m[35m (26.1ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "journeymen" CASCADE[0m
+  [1m[35m (29.9ms)[0m  [1m[35mCREATE TABLE "journeymen" ("id" bigserial primary key, "name" character varying, "skill" character varying, "country" character varying, "city" character varying, "price" decimal, "journeyman_pic" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "reservations" CASCADE[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" bigserial primary key, "start_date" date, "number_days" integer, "cost" decimal, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint, "journeyman_id" bigint)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_journeyman_id" ON "reservations" ("journeyman_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "role" integer, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "jti" character varying NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_jti" ON "users" ("jti")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "active_storage_variant_records" ADD CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_176dba0b83"
+FOREIGN KEY ("journeyman_id")
+  REFERENCES "journeymen" ("id")
+[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_48a92fce51"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220727192014)[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220725230321),
+(20220726162935),
+(20220726163618),
+(20220726164058),
+(20220726203727),
+(20220726211239);
+
+[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-07-30 20:51:50.726584"], ["updated_at", "2022-07-30 20:51:50.726584"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2022-07-30 20:51:50.732398"], ["key", "environment"]]
+  [1m[36mTRANSACTION (27.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "e9b8fe64fd37ff26027cf4731a45937c0c7e821c"], ["created_at", "2022-07-30 20:51:50.766114"], ["updated_at", "2022-07-30 20:51:50.766114"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "AdminUser"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "CommonUser"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.7ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Raul"], ["skill", "carpenter"], ["country", "Mexico"], ["city", "Tijuana"], ["price", "110.0"], ["journeyman_pic", nil], ["created_at", "2022-07-30 20:51:51.869330"], ["updated_at", "2022-07-30 20:51:51.869330"]]
+  [1m[36mTRANSACTION (40.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "l6klnvlvscluek13ro4see572iw1"], ["filename", "carpenter.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 30589], ["checksum", "N6bWHeqkCgDaToDhbRHAXg=="], ["created_at", "2022-07-30 20:51:52.217125"]]
+  [1m[36mActiveStorage::Attachment Create (0.8ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Journeyman"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-07-30 20:51:52.235333"]]
+  [1m[36mJourneyman Update (0.4ms)[0m  [1m[33mUPDATE "journeymen" SET "updated_at" = $1 WHERE "journeymen"."id" = $2[0m  [["updated_at", "2022-07-30 20:51:52.237886"], ["id", 1]]
+  [1m[36mTRANSACTION (40.7ms)[0m  [1m[35mCOMMIT[0m
+[36m  Disk Storage (29.3ms) [0m[32mUploaded file to key: l6klnvlvscluek13ro4see572iw1 (checksum: N6bWHeqkCgDaToDhbRHAXg==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 5477ea45-9472-4aa8-bc5c-06857c338a35) to Async(default) with arguments: #<GlobalID:0x0000000112064880 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/1>>
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.8ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Gubber"], ["skill", "electrician"], ["country", "USA"], ["city", "San Diego"], ["price", "90.0"], ["journeyman_pic", nil], ["created_at", "2022-07-30 20:51:52.314547"], ["updated_at", "2022-07-30 20:51:52.314547"]]
+  [1m[36mTRANSACTION (39.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (47.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "64rpm85f5ut5k4fojb3no0prdwws"], ["filename", "electrician.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 96545], ["checksum", "H/GYjiAfRJuiKdHhcmc8WA=="], ["created_at", "2022-07-30 20:51:52.369159"]]
+  [1m[36mActiveStorage::Attachment Create (1.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Journeyman"], ["record_id", 2], ["blob_id", 2], ["created_at", "2022-07-30 20:51:52.418888"]]
+  [1m[36mJourneyman Update (0.3ms)[0m  [1m[33mUPDATE "journeymen" SET "updated_at" = $1 WHERE "journeymen"."id" = $2[0m  [["updated_at", "2022-07-30 20:51:52.422000"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5477ea45-9472-4aa8-bc5c-06857c338a35]   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5477ea45-9472-4aa8-bc5c-06857c338a35] Performing ActiveStorage::AnalyzeJob (Job ID: 5477ea45-9472-4aa8-bc5c-06857c338a35) from Async(default) enqueued at 2022-07-30T20:51:52Z with arguments: #<GlobalID:0x0000000112895c70 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/1>>
+  [1m[36mTRANSACTION (59.0ms)[0m  [1m[35mCOMMIT[0m
+[36m  Disk Storage (56.8ms) [0m[32mUploaded file to key: 64rpm85f5ut5k4fojb3no0prdwws (checksum: H/GYjiAfRJuiKdHhcmc8WA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 48f7206a-24cd-4200-8336-b06f7640e3f8) to Async(default) with arguments: #<GlobalID:0x00000001128cff88 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5477ea45-9472-4aa8-bc5c-06857c338a35] [36m  Disk Storage (1.9ms) [0m[34mDownloaded file from key: l6klnvlvscluek13ro4see572iw1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (26.4ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Honey"], ["skill", "gardener"], ["country", "France"], ["city", "Lyon"], ["price", "80.0"], ["journeyman_pic", nil], ["created_at", "2022-07-30 20:51:52.542261"], ["updated_at", "2022-07-30 20:51:52.542261"]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5477ea45-9472-4aa8-bc5c-06857c338a35] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5477ea45-9472-4aa8-bc5c-06857c338a35]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5477ea45-9472-4aa8-bc5c-06857c338a35]   [1m[36mActiveStorage::Blob Update (0.7ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+  [1m[36mTRANSACTION (21.3ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5477ea45-9472-4aa8-bc5c-06857c338a35]   [1m[36mTRANSACTION (16.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [5477ea45-9472-4aa8-bc5c-06857c338a35] Performed ActiveStorage::AnalyzeJob (Job ID: 5477ea45-9472-4aa8-bc5c-06857c338a35) from Async(default) in 225.54ms
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [48f7206a-24cd-4200-8336-b06f7640e3f8]   [1m[36mActiveStorage::Blob Load (3.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [48f7206a-24cd-4200-8336-b06f7640e3f8] Performing ActiveStorage::AnalyzeJob (Job ID: 48f7206a-24cd-4200-8336-b06f7640e3f8) from Async(default) enqueued at 2022-07-30T20:51:52Z with arguments: #<GlobalID:0x00000001129e6610 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/2>>
+  [1m[36mActiveStorage::Attachment Load (1.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "kqfb903979d4e9oq6ss0lxl0mfyz"], ["filename", "gardener.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 257803], ["checksum", "1ShXJxfamkqj1RiI7Rm+bw=="], ["created_at", "2022-07-30 20:51:52.607164"]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [48f7206a-24cd-4200-8336-b06f7640e3f8] [36m  Disk Storage (2.3ms) [0m[34mDownloaded file from key: 64rpm85f5ut5k4fojb3no0prdwws[0m
+  [1m[36mActiveStorage::Attachment Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Journeyman"], ["record_id", 3], ["blob_id", 3], ["created_at", "2022-07-30 20:51:52.609328"]]
+  [1m[36mJourneyman Update (2.3ms)[0m  [1m[33mUPDATE "journeymen" SET "updated_at" = $1 WHERE "journeymen"."id" = $2[0m  [["updated_at", "2022-07-30 20:51:52.612519"], ["id", 3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [48f7206a-24cd-4200-8336-b06f7640e3f8] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [48f7206a-24cd-4200-8336-b06f7640e3f8]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [48f7206a-24cd-4200-8336-b06f7640e3f8]   [1m[36mActiveStorage::Blob Update (0.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+  [1m[36mTRANSACTION (39.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [48f7206a-24cd-4200-8336-b06f7640e3f8]   [1m[36mTRANSACTION (37.0ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [48f7206a-24cd-4200-8336-b06f7640e3f8] Performed ActiveStorage::AnalyzeJob (Job ID: 48f7206a-24cd-4200-8336-b06f7640e3f8) from Async(default) in 77.48ms
+[36m  Disk Storage (4.0ms) [0m[32mUploaded file to key: kqfb903979d4e9oq6ss0lxl0mfyz (checksum: 1ShXJxfamkqj1RiI7Rm+bw==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 26c1fb4f-1bc5-420f-bec6-7b4a5c5de95b) to Async(default) with arguments: #<GlobalID:0x0000000112a652d0 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/3>>
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.7ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Doofus"], ["skill", "mason"], ["country", "Argentina"], ["city", "Cordoba"], ["price", "70.0"], ["journeyman_pic", nil], ["created_at", "2022-07-30 20:51:52.663220"], ["updated_at", "2022-07-30 20:51:52.663220"]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [26c1fb4f-1bc5-420f-bec6-7b4a5c5de95b]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [26c1fb4f-1bc5-420f-bec6-7b4a5c5de95b] Performing ActiveStorage::AnalyzeJob (Job ID: 26c1fb4f-1bc5-420f-bec6-7b4a5c5de95b) from Async(default) enqueued at 2022-07-30T20:51:52Z with arguments: #<GlobalID:0x0000000112ae5958 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/3>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [26c1fb4f-1bc5-420f-bec6-7b4a5c5de95b] [36m  Disk Storage (0.5ms) [0m[34mDownloaded file from key: kqfb903979d4e9oq6ss0lxl0mfyz[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [26c1fb4f-1bc5-420f-bec6-7b4a5c5de95b] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [26c1fb4f-1bc5-420f-bec6-7b4a5c5de95b]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [26c1fb4f-1bc5-420f-bec6-7b4a5c5de95b]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 3]]
+  [1m[36mTRANSACTION (126.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [26c1fb4f-1bc5-420f-bec6-7b4a5c5de95b]   [1m[36mTRANSACTION (95.2ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [26c1fb4f-1bc5-420f-bec6-7b4a5c5de95b] Performed ActiveStorage::AnalyzeJob (Job ID: 26c1fb4f-1bc5-420f-bec6-7b4a5c5de95b) from Async(default) in 123.98ms
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "rfj034q8lw2zzkppawqdk86xz7l1"], ["filename", "mason.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 160202], ["checksum", "zpF/ChDqtUBa3wznvIhsoA=="], ["created_at", "2022-07-30 20:51:52.802343"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Journeyman"], ["record_id", 4], ["blob_id", 4], ["created_at", "2022-07-30 20:51:52.804394"]]
+  [1m[36mJourneyman Update (0.3ms)[0m  [1m[33mUPDATE "journeymen" SET "updated_at" = $1 WHERE "journeymen"."id" = $2[0m  [["updated_at", "2022-07-30 20:51:52.806468"], ["id", 4]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+[36m  Disk Storage (17.1ms) [0m[32mUploaded file to key: rfj034q8lw2zzkppawqdk86xz7l1 (checksum: zpF/ChDqtUBa3wznvIhsoA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: fc61818b-b998-4669-9913-c5130a54c58b) to Async(default) with arguments: #<GlobalID:0x0000000112bd7f78 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/4>>
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.7ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Gubber"], ["skill", "plumber"], ["country", "Chile"], ["city", "Valparaiso"], ["price", "95.0"], ["journeyman_pic", nil], ["created_at", "2022-07-30 20:51:52.828292"], ["updated_at", "2022-07-30 20:51:52.828292"]]
+  [1m[36mTRANSACTION (25.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.9ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "mcdh8k35iw387l80wcxtmork4u07"], ["filename", "plumber.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 58542], ["checksum", "9E5coiXvYIf+NSL4csHwbQ=="], ["created_at", "2022-07-30 20:51:52.865364"]]
+  [1m[36mActiveStorage::Attachment Create (1.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Journeyman"], ["record_id", 5], ["blob_id", 5], ["created_at", "2022-07-30 20:51:52.868412"]]
+  [1m[36mJourneyman Update (0.3ms)[0m  [1m[33mUPDATE "journeymen" SET "updated_at" = $1 WHERE "journeymen"."id" = $2[0m  [["updated_at", "2022-07-30 20:51:52.871257"], ["id", 5]]
+  [1m[36mTRANSACTION (40.8ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fc61818b-b998-4669-9913-c5130a54c58b]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fc61818b-b998-4669-9913-c5130a54c58b] Performing ActiveStorage::AnalyzeJob (Job ID: fc61818b-b998-4669-9913-c5130a54c58b) from Async(default) enqueued at 2022-07-30T20:51:52Z with arguments: #<GlobalID:0x0000000112c75278 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/4>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fc61818b-b998-4669-9913-c5130a54c58b] [36m  Disk Storage (0.3ms) [0m[34mDownloaded file from key: rfj034q8lw2zzkppawqdk86xz7l1[0m
+[36m  Disk Storage (142.2ms) [0m[32mUploaded file to key: mcdh8k35iw387l80wcxtmork4u07 (checksum: 9E5coiXvYIf+NSL4csHwbQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: eb7ae462-6d16-4862-8403-137bc76bad06) to Async(default) with arguments: #<GlobalID:0x0000000112ccd478 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/5>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fc61818b-b998-4669-9913-c5130a54c58b] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fc61818b-b998-4669-9913-c5130a54c58b]   [1m[36mTRANSACTION (13.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fc61818b-b998-4669-9913-c5130a54c58b]   [1m[36mActiveStorage::Blob Update (0.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 4]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fc61818b-b998-4669-9913-c5130a54c58b]   [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fc61818b-b998-4669-9913-c5130a54c58b] Performed ActiveStorage::AnalyzeJob (Job ID: fc61818b-b998-4669-9913-c5130a54c58b) from Async(default) in 61.49ms
+[ActiveJob] [ActiveStorage::AnalyzeJob] [eb7ae462-6d16-4862-8403-137bc76bad06]   [1m[36mActiveStorage::Blob Load (5.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [eb7ae462-6d16-4862-8403-137bc76bad06] Performing ActiveStorage::AnalyzeJob (Job ID: eb7ae462-6d16-4862-8403-137bc76bad06) from Async(default) enqueued at 2022-07-30T20:51:53Z with arguments: #<GlobalID:0x0000000112d3ca58 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/5>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [eb7ae462-6d16-4862-8403-137bc76bad06] [36m  Disk Storage (4.8ms) [0m[34mDownloaded file from key: mcdh8k35iw387l80wcxtmork4u07[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [eb7ae462-6d16-4862-8403-137bc76bad06] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [eb7ae462-6d16-4862-8403-137bc76bad06]   [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [eb7ae462-6d16-4862-8403-137bc76bad06]   [1m[36mActiveStorage::Blob Update (0.6ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 5]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [eb7ae462-6d16-4862-8403-137bc76bad06]   [1m[36mTRANSACTION (55.8ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [eb7ae462-6d16-4862-8403-137bc76bad06] Performed ActiveStorage::AnalyzeJob (Job ID: eb7ae462-6d16-4862-8403-137bc76bad06) from Async(default) in 88.38ms
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (26.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateActiveStorageTables (20220727192014)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (63.3ms)[0m  [1m[35mDROP TABLE "active_storage_variant_records"[0m
+  [1m[35m (15.4ms)[0m  [1m[35mDROP TABLE "active_storage_attachments"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "active_storage_blobs"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.5ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20220727192014"]]
+  [1m[36mTRANSACTION (85.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddJtiToUsers (20220726211239)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP INDEX  "index_users_on_jti"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" DROP COLUMN "jti"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20220726211239"]]
+  [1m[36mTRANSACTION (58.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviseToUsers (20220726203727)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7702323232564939545)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddJtiToUsers (20220726211239)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "users" ADD "jti" character varying NOT NULL[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_jti" ON "users" ("jti")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220726211239"]]
+  [1m[36mTRANSACTION (40.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveStorageTables (20220727192014)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (28.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220727192014"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (400.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "journeyman_back_end_development"[0m
+  [1m[35m (136.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "journeyman_back_end_test"[0m
+  [1m[35m (4489.8ms)[0m  [1m[35mCREATE DATABASE "journeyman_back_end_development" ENCODING = 'unicode'[0m
+  [1m[35m (1093.2ms)[0m  [1m[35mCREATE DATABASE "journeyman_back_end_test" ENCODING = 'unicode'[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20220725230321)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (44.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "role" integer DEFAULT 0, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220725230321"]]
+  [1m[36mTRANSACTION (21.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJourneymen (20220726162935)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "journeymen" ("id" bigserial primary key, "name" character varying, "skill" character varying, "country" character varying, "city" character varying, "price" decimal, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220726162935"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateReservations (20220726163618)
+  [1m[36mTRANSACTION (40.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" bigserial primary key, "start_date" date, "number_days" integer, "cost" decimal, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220726163618"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddReferencesToTables (20220726164058)
+  [1m[36mTRANSACTION (40.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "reservations" ADD "user_id" bigint[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_48a92fce51"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "reservations" ADD "journeyman_id" bigint[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_journeyman_id" ON "reservations" ("journeyman_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_176dba0b83"
+FOREIGN KEY ("journeyman_id")
+  REFERENCES "journeymen" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220726164058"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDeviseToUsers (20220726203727)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "email" character varying DEFAULT '' NOT NULL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "encrypted_password" character varying DEFAULT '' NOT NULL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" timestamp(6)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_created_at" timestamp(6)[0m
+  [1m[35m (19.0ms)[0m  [1m[35mCREATE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220726203727"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddJtiToUsers (20220726211239)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "jti" character varying NOT NULL[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_jti" ON "users" ("jti")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220726211239"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveStorageTables (20220727192014)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (42.6ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (22.6ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220727192014"]]
+  [1m[36mTRANSACTION (55.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-07-30 21:31:25.525473"], ["updated_at", "2022-07-30 21:31:25.525473"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (371.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "AdminUser"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "CommonUser"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (44.2ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Raul"], ["skill", "carpenter"], ["country", "Mexico"], ["city", "Tijuana"], ["price", "110.0"], ["created_at", "2022-07-30 21:53:09.495627"], ["updated_at", "2022-07-30 21:53:09.495627"]]
+  [1m[36mTRANSACTION (73.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (26.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (42.0ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "bx6xl4pvlo584e6bqxydv3sdxvkz"], ["filename", "carpenter.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 30589], ["checksum", "N6bWHeqkCgDaToDhbRHAXg=="], ["created_at", "2022-07-30 21:53:10.111716"]]
+  [1m[36mActiveStorage::Attachment Create (22.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Journeyman"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-07-30 21:53:10.169485"]]
+  [1m[36mJourneyman Update (0.4ms)[0m  [1m[33mUPDATE "journeymen" SET "updated_at" = $1 WHERE "journeymen"."id" = $2[0m  [["updated_at", "2022-07-30 21:53:10.194065"], ["id", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+[36m  Disk Storage (87.9ms) [0m[32mUploaded file to key: bx6xl4pvlo584e6bqxydv3sdxvkz (checksum: N6bWHeqkCgDaToDhbRHAXg==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 53e758d4-0b88-4459-8c7b-71590486ed2d) to Async(default) with arguments: #<GlobalID:0x0000000113b55248 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/1>>
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.7ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Gubber"], ["skill", "electrician"], ["country", "USA"], ["city", "San Diego"], ["price", "90.0"], ["created_at", "2022-07-30 21:53:10.324755"], ["updated_at", "2022-07-30 21:53:10.324755"]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [53e758d4-0b88-4459-8c7b-71590486ed2d]   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [53e758d4-0b88-4459-8c7b-71590486ed2d] Performing ActiveStorage::AnalyzeJob (Job ID: 53e758d4-0b88-4459-8c7b-71590486ed2d) from Async(default) enqueued at 2022-07-30T21:53:10Z with arguments: #<GlobalID:0x0000000113d0d0e0 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/1>>
+  [1m[36mTRANSACTION (70.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "1pn4ubr3fubpii9k2yegjm7b3koo"], ["filename", "electrician.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 96545], ["checksum", "H/GYjiAfRJuiKdHhcmc8WA=="], ["created_at", "2022-07-30 21:53:10.540749"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Journeyman"], ["record_id", 2], ["blob_id", 2], ["created_at", "2022-07-30 21:53:10.543157"]]
+  [1m[36mJourneyman Update (0.3ms)[0m  [1m[33mUPDATE "journeymen" SET "updated_at" = $1 WHERE "journeymen"."id" = $2[0m  [["updated_at", "2022-07-30 21:53:10.545369"], ["id", 2]]
+  [1m[36mTRANSACTION (31.2ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [53e758d4-0b88-4459-8c7b-71590486ed2d] [36m  Disk Storage (0.6ms) [0m[34mDownloaded file from key: bx6xl4pvlo584e6bqxydv3sdxvkz[0m
+[36m  Disk Storage (8.2ms) [0m[32mUploaded file to key: 1pn4ubr3fubpii9k2yegjm7b3koo (checksum: H/GYjiAfRJuiKdHhcmc8WA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: eb5e665a-dbee-4ffc-abb8-2ab4962b5c00) to Async(default) with arguments: #<GlobalID:0x00000001140ee178 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [53e758d4-0b88-4459-8c7b-71590486ed2d] Skipping image analysis because the ruby-vips gem isn't installed
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [53e758d4-0b88-4459-8c7b-71590486ed2d]   [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (1.2ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Honey"], ["skill", "gardener"], ["country", "France"], ["city", "Lyon"], ["price", "80.0"], ["created_at", "2022-07-30 21:53:10.591445"], ["updated_at", "2022-07-30 21:53:10.591445"]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [53e758d4-0b88-4459-8c7b-71590486ed2d]   [1m[36mActiveStorage::Blob Update (2.0ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [eb5e665a-dbee-4ffc-abb8-2ab4962b5c00]   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [eb5e665a-dbee-4ffc-abb8-2ab4962b5c00] Performing ActiveStorage::AnalyzeJob (Job ID: eb5e665a-dbee-4ffc-abb8-2ab4962b5c00) from Async(default) enqueued at 2022-07-30T21:53:10Z with arguments: #<GlobalID:0x000000011427f438 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [eb5e665a-dbee-4ffc-abb8-2ab4962b5c00] [36m  Disk Storage (0.3ms) [0m[34mDownloaded file from key: 1pn4ubr3fubpii9k2yegjm7b3koo[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [eb5e665a-dbee-4ffc-abb8-2ab4962b5c00] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [eb5e665a-dbee-4ffc-abb8-2ab4962b5c00]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (81.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [eb5e665a-dbee-4ffc-abb8-2ab4962b5c00]   [1m[36mActiveStorage::Blob Update (1.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [53e758d4-0b88-4459-8c7b-71590486ed2d]   [1m[36mTRANSACTION (120.3ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [53e758d4-0b88-4459-8c7b-71590486ed2d] Performed ActiveStorage::AnalyzeJob (Job ID: 53e758d4-0b88-4459-8c7b-71590486ed2d) from Async(default) in 387.13ms
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "4kgdsngcyl5g74hmb7jtu394ft1o"], ["filename", "gardener.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 257803], ["checksum", "1ShXJxfamkqj1RiI7Rm+bw=="], ["created_at", "2022-07-30 21:53:10.747815"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Journeyman"], ["record_id", 3], ["blob_id", 3], ["created_at", "2022-07-30 21:53:10.749789"]]
+  [1m[36mJourneyman Update (0.3ms)[0m  [1m[33mUPDATE "journeymen" SET "updated_at" = $1 WHERE "journeymen"."id" = $2[0m  [["updated_at", "2022-07-30 21:53:10.752138"], ["id", 3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [eb5e665a-dbee-4ffc-abb8-2ab4962b5c00]   [1m[36mTRANSACTION (119.8ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [eb5e665a-dbee-4ffc-abb8-2ab4962b5c00] Performed ActiveStorage::AnalyzeJob (Job ID: eb5e665a-dbee-4ffc-abb8-2ab4962b5c00) from Async(default) in 198.17ms
+  [1m[36mTRANSACTION (47.5ms)[0m  [1m[35mCOMMIT[0m
+[36m  Disk Storage (2.5ms) [0m[32mUploaded file to key: 4kgdsngcyl5g74hmb7jtu394ft1o (checksum: 1ShXJxfamkqj1RiI7Rm+bw==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 59ecd665-283f-41da-8f1c-00457000a125) to Async(default) with arguments: #<GlobalID:0x0000000114467390 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/3>>
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.7ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Doofus"], ["skill", "mason"], ["country", "Argentina"], ["city", "Cordoba"], ["price", "70.0"], ["created_at", "2022-07-30 21:53:10.806151"], ["updated_at", "2022-07-30 21:53:10.806151"]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [59ecd665-283f-41da-8f1c-00457000a125]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [59ecd665-283f-41da-8f1c-00457000a125] Performing ActiveStorage::AnalyzeJob (Job ID: 59ecd665-283f-41da-8f1c-00457000a125) from Async(default) enqueued at 2022-07-30T21:53:10Z with arguments: #<GlobalID:0x0000000114497270 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/3>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [59ecd665-283f-41da-8f1c-00457000a125] [36m  Disk Storage (0.4ms) [0m[34mDownloaded file from key: 4kgdsngcyl5g74hmb7jtu394ft1o[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [59ecd665-283f-41da-8f1c-00457000a125] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [59ecd665-283f-41da-8f1c-00457000a125]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [59ecd665-283f-41da-8f1c-00457000a125]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 3]]
+  [1m[36mTRANSACTION (35.3ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [59ecd665-283f-41da-8f1c-00457000a125]   [1m[36mTRANSACTION (23.2ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [59ecd665-283f-41da-8f1c-00457000a125] Performed ActiveStorage::AnalyzeJob (Job ID: 59ecd665-283f-41da-8f1c-00457000a125) from Async(default) in 33.13ms
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "t4z1h1geoqd3fe5mat5qnudrklj2"], ["filename", "mason.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 160202], ["checksum", "zpF/ChDqtUBa3wznvIhsoA=="], ["created_at", "2022-07-30 21:53:10.924547"]]
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Journeyman"], ["record_id", 4], ["blob_id", 4], ["created_at", "2022-07-30 21:53:10.927087"]]
+  [1m[36mJourneyman Update (0.3ms)[0m  [1m[33mUPDATE "journeymen" SET "updated_at" = $1 WHERE "journeymen"."id" = $2[0m  [["updated_at", "2022-07-30 21:53:10.929755"], ["id", 4]]
+  [1m[36mTRANSACTION (79.9ms)[0m  [1m[35mCOMMIT[0m
+[36m  Disk Storage (24.1ms) [0m[32mUploaded file to key: t4z1h1geoqd3fe5mat5qnudrklj2 (checksum: zpF/ChDqtUBa3wznvIhsoA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: a8797b80-ac90-4fef-bcaa-a8b00050faf2) to Async(default) with arguments: #<GlobalID:0x00000001146113d0 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/4>>
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.7ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Gubber"], ["skill", "plumber"], ["country", "Chile"], ["city", "Valparaiso"], ["price", "95.0"], ["created_at", "2022-07-30 21:53:11.038308"], ["updated_at", "2022-07-30 21:53:11.038308"]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a8797b80-ac90-4fef-bcaa-a8b00050faf2]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a8797b80-ac90-4fef-bcaa-a8b00050faf2] Performing ActiveStorage::AnalyzeJob (Job ID: a8797b80-ac90-4fef-bcaa-a8b00050faf2) from Async(default) enqueued at 2022-07-30T21:53:11Z with arguments: #<GlobalID:0x00000001146b0ea8 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/4>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a8797b80-ac90-4fef-bcaa-a8b00050faf2] [36m  Disk Storage (0.3ms) [0m[34mDownloaded file from key: t4z1h1geoqd3fe5mat5qnudrklj2[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a8797b80-ac90-4fef-bcaa-a8b00050faf2] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a8797b80-ac90-4fef-bcaa-a8b00050faf2]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a8797b80-ac90-4fef-bcaa-a8b00050faf2]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 4]]
+  [1m[36mTRANSACTION (193.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a8797b80-ac90-4fef-bcaa-a8b00050faf2]   [1m[36mTRANSACTION (126.3ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a8797b80-ac90-4fef-bcaa-a8b00050faf2] Performed ActiveStorage::AnalyzeJob (Job ID: a8797b80-ac90-4fef-bcaa-a8b00050faf2) from Async(default) in 271.84ms
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "bks2xxpjxolap0l28efvc2fh351p"], ["filename", "plumber.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 58542], ["checksum", "9E5coiXvYIf+NSL4csHwbQ=="], ["created_at", "2022-07-30 21:53:11.445139"]]
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Journeyman"], ["record_id", 5], ["blob_id", 5], ["created_at", "2022-07-30 21:53:11.447509"]]
+  [1m[36mJourneyman Update (0.3ms)[0m  [1m[33mUPDATE "journeymen" SET "updated_at" = $1 WHERE "journeymen"."id" = $2[0m  [["updated_at", "2022-07-30 21:53:11.449445"], ["id", 5]]
+  [1m[36mTRANSACTION (156.4ms)[0m  [1m[35mCOMMIT[0m
+[36m  Disk Storage (26.0ms) [0m[32mUploaded file to key: bks2xxpjxolap0l28efvc2fh351p (checksum: 9E5coiXvYIf+NSL4csHwbQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 699106b0-22a3-42e6-975c-66b431427912) to Async(default) with arguments: #<GlobalID:0x00000001147e1390 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/5>>
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [699106b0-22a3-42e6-975c-66b431427912]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [699106b0-22a3-42e6-975c-66b431427912] Performing ActiveStorage::AnalyzeJob (Job ID: 699106b0-22a3-42e6-975c-66b431427912) from Async(default) enqueued at 2022-07-30T21:53:11Z with arguments: #<GlobalID:0x0000000113ccc310 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/5>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [699106b0-22a3-42e6-975c-66b431427912] [36m  Disk Storage (0.3ms) [0m[34mDownloaded file from key: bks2xxpjxolap0l28efvc2fh351p[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [699106b0-22a3-42e6-975c-66b431427912] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [699106b0-22a3-42e6-975c-66b431427912]   [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Load (13.4ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[31mROLLBACK[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [699106b0-22a3-42e6-975c-66b431427912]   [1m[36mActiveStorage::Blob Update (14.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 5]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [699106b0-22a3-42e6-975c-66b431427912]   [1m[36mTRANSACTION (1.4ms)[0m  [1m[31mROLLBACK[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [699106b0-22a3-42e6-975c-66b431427912] Performed ActiveStorage::AnalyzeJob (Job ID: 699106b0-22a3-42e6-975c-66b431427912) from Async(default) in 36.39ms
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mJourneyman Load (1.0ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "AdminUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (128.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "role", "password", "created_at", "updated_at", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "jti") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["username", "AdminUser"], ["role", 1], ["password", "[FILTERED]"], ["created_at", "2022-07-30 22:00:30.831746"], ["updated_at", "2022-07-30 22:00:30.831746"], ["email", "admin@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["jti", "e086f059-f112-4077-b45b-cc8433a7f422"]]
+  [1m[36mTRANSACTION (46.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "reg@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "RegUser"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "role", "password", "created_at", "updated_at", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "jti") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["username", "RegUser"], ["role", 0], ["password", "[FILTERED]"], ["created_at", "2022-07-30 22:00:31.282971"], ["updated_at", "2022-07-30 22:00:31.282971"], ["email", "reg@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["jti", "1077cc76-67b4-4e74-a716-96f513b51fdf"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (41.8ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Raul"], ["skill", "carpenter"], ["country", "Mexico"], ["city", "Tijuana"], ["price", "110.0"], ["created_at", "2022-07-30 22:00:31.321614"], ["updated_at", "2022-07-30 22:00:31.321614"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "rafbjgzdvm7dkpt0np5mlp9nwxxi"], ["filename", "carpenter.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 30589], ["checksum", "N6bWHeqkCgDaToDhbRHAXg=="], ["created_at", "2022-07-30 22:00:31.607929"]]
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Journeyman"], ["record_id", 6], ["blob_id", 6], ["created_at", "2022-07-30 22:00:31.610871"]]
+  [1m[36mJourneyman Update (0.4ms)[0m  [1m[33mUPDATE "journeymen" SET "updated_at" = $1 WHERE "journeymen"."id" = $2[0m  [["updated_at", "2022-07-30 22:00:31.613153"], ["id", 6]]
+  [1m[36mTRANSACTION (40.7ms)[0m  [1m[35mCOMMIT[0m
+[36m  Disk Storage (29.6ms) [0m[32mUploaded file to key: rafbjgzdvm7dkpt0np5mlp9nwxxi (checksum: N6bWHeqkCgDaToDhbRHAXg==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 4c716a68-065d-4396-a1b8-2ecbfddb2716) to Async(default) with arguments: #<GlobalID:0x000000010ef5c2b0 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/6>>
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.9ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Gubber"], ["skill", "electrician"], ["country", "USA"], ["city", "San Diego"], ["price", "90.0"], ["created_at", "2022-07-30 22:00:31.690865"], ["updated_at", "2022-07-30 22:00:31.690865"]]
+  [1m[36mTRANSACTION (40.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "urffkf8shx9udnrl44rzfmnzebll"], ["filename", "electrician.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 96545], ["checksum", "H/GYjiAfRJuiKdHhcmc8WA=="], ["created_at", "2022-07-30 22:00:31.745483"]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4c716a68-065d-4396-a1b8-2ecbfddb2716]   [1m[36mActiveStorage::Blob Load (1.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4c716a68-065d-4396-a1b8-2ecbfddb2716] Performing ActiveStorage::AnalyzeJob (Job ID: 4c716a68-065d-4396-a1b8-2ecbfddb2716) from Async(default) enqueued at 2022-07-30T22:00:31Z with arguments: #<GlobalID:0x000000010f226e00 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/6>>
+  [1m[36mActiveStorage::Attachment Create (55.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Journeyman"], ["record_id", 7], ["blob_id", 7], ["created_at", "2022-07-30 22:00:31.747672"]]
+  [1m[36mJourneyman Update (0.3ms)[0m  [1m[33mUPDATE "journeymen" SET "updated_at" = $1 WHERE "journeymen"."id" = $2[0m  [["updated_at", "2022-07-30 22:00:31.804849"], ["id", 7]]
+  [1m[36mTRANSACTION (71.3ms)[0m  [1m[35mCOMMIT[0m
+[36m  Disk Storage (22.2ms) [0m[32mUploaded file to key: urffkf8shx9udnrl44rzfmnzebll (checksum: H/GYjiAfRJuiKdHhcmc8WA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 424a2f79-f940-4979-a304-5e5f6192787c) to Async(default) with arguments: #<GlobalID:0x000000010f235180 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/7>>
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.8ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Honey"], ["skill", "gardener"], ["country", "France"], ["city", "Lyon"], ["price", "80.0"], ["created_at", "2022-07-30 22:00:31.903555"], ["updated_at", "2022-07-30 22:00:31.903555"]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [424a2f79-f940-4979-a304-5e5f6192787c]   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [424a2f79-f940-4979-a304-5e5f6192787c] Performing ActiveStorage::AnalyzeJob (Job ID: 424a2f79-f940-4979-a304-5e5f6192787c) from Async(default) enqueued at 2022-07-30T22:00:31Z with arguments: #<GlobalID:0x000000010f526308 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/7>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4c716a68-065d-4396-a1b8-2ecbfddb2716] [36m  Disk Storage (0.5ms) [0m[34mDownloaded file from key: rafbjgzdvm7dkpt0np5mlp9nwxxi[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [424a2f79-f940-4979-a304-5e5f6192787c] [36m  Disk Storage (0.6ms) [0m[34mDownloaded file from key: urffkf8shx9udnrl44rzfmnzebll[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4c716a68-065d-4396-a1b8-2ecbfddb2716] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [424a2f79-f940-4979-a304-5e5f6192787c] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4c716a68-065d-4396-a1b8-2ecbfddb2716]   [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [424a2f79-f940-4979-a304-5e5f6192787c]   [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4c716a68-065d-4396-a1b8-2ecbfddb2716]   [1m[36mActiveStorage::Blob Update (1.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 6]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [424a2f79-f940-4979-a304-5e5f6192787c]   [1m[36mActiveStorage::Blob Update (1.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 7]]
+  [1m[36mTRANSACTION (41.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "ginm1slp3wxc6cm51tkhoougdr81"], ["filename", "gardener.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 257803], ["checksum", "1ShXJxfamkqj1RiI7Rm+bw=="], ["created_at", "2022-07-30 22:00:31.956541"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Journeyman"], ["record_id", 8], ["blob_id", 8], ["created_at", "2022-07-30 22:00:31.958850"]]
+  [1m[36mJourneyman Update (0.3ms)[0m  [1m[33mUPDATE "journeymen" SET "updated_at" = $1 WHERE "journeymen"."id" = $2[0m  [["updated_at", "2022-07-30 22:00:31.960748"], ["id", 8]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [424a2f79-f940-4979-a304-5e5f6192787c]   [1m[36mTRANSACTION (50.0ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [424a2f79-f940-4979-a304-5e5f6192787c] Performed ActiveStorage::AnalyzeJob (Job ID: 424a2f79-f940-4979-a304-5e5f6192787c) from Async(default) in 78.42ms
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4c716a68-065d-4396-a1b8-2ecbfddb2716]   [1m[36mTRANSACTION (51.1ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4c716a68-065d-4396-a1b8-2ecbfddb2716] Performed ActiveStorage::AnalyzeJob (Job ID: 4c716a68-065d-4396-a1b8-2ecbfddb2716) from Async(default) in 292.61ms
+  [1m[36mTRANSACTION (66.2ms)[0m  [1m[35mCOMMIT[0m
+[36m  Disk Storage (2.8ms) [0m[32mUploaded file to key: ginm1slp3wxc6cm51tkhoougdr81 (checksum: 1ShXJxfamkqj1RiI7Rm+bw==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: adad8a2b-40b5-4166-b43f-34fd82b11c81) to Async(default) with arguments: #<GlobalID:0x000000010f817a30 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/8>>
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.3ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Doofus"], ["skill", "mason"], ["country", "Argentina"], ["city", "Cordoba"], ["price", "70.0"], ["created_at", "2022-07-30 22:00:32.034171"], ["updated_at", "2022-07-30 22:00:32.034171"]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [adad8a2b-40b5-4166-b43f-34fd82b11c81]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [adad8a2b-40b5-4166-b43f-34fd82b11c81] Performing ActiveStorage::AnalyzeJob (Job ID: adad8a2b-40b5-4166-b43f-34fd82b11c81) from Async(default) enqueued at 2022-07-30T22:00:32Z with arguments: #<GlobalID:0x000000010f85c388 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/8>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [adad8a2b-40b5-4166-b43f-34fd82b11c81] [36m  Disk Storage (0.7ms) [0m[34mDownloaded file from key: ginm1slp3wxc6cm51tkhoougdr81[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [adad8a2b-40b5-4166-b43f-34fd82b11c81] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [adad8a2b-40b5-4166-b43f-34fd82b11c81]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [adad8a2b-40b5-4166-b43f-34fd82b11c81]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 8]]
+  [1m[36mTRANSACTION (41.0ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [adad8a2b-40b5-4166-b43f-34fd82b11c81]   [1m[36mTRANSACTION (27.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [adad8a2b-40b5-4166-b43f-34fd82b11c81] Performed ActiveStorage::AnalyzeJob (Job ID: adad8a2b-40b5-4166-b43f-34fd82b11c81) from Async(default) in 38.52ms
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "g7g1hyswku1xl3zcq9tmr8c5d5fc"], ["filename", "mason.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 160202], ["checksum", "zpF/ChDqtUBa3wznvIhsoA=="], ["created_at", "2022-07-30 22:00:32.088563"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Journeyman"], ["record_id", 9], ["blob_id", 9], ["created_at", "2022-07-30 22:00:32.090447"]]
+  [1m[36mJourneyman Update (0.3ms)[0m  [1m[33mUPDATE "journeymen" SET "updated_at" = $1 WHERE "journeymen"."id" = $2[0m  [["updated_at", "2022-07-30 22:00:32.092450"], ["id", 9]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+[36m  Disk Storage (18.3ms) [0m[32mUploaded file to key: g7g1hyswku1xl3zcq9tmr8c5d5fc (checksum: zpF/ChDqtUBa3wznvIhsoA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: b9335376-2365-4c4f-8180-e46abae68eb2) to Async(default) with arguments: #<GlobalID:0x000000010f999e58 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/9>>
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.7ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Gubber"], ["skill", "plumber"], ["country", "Chile"], ["city", "Valparaiso"], ["price", "95.0"], ["created_at", "2022-07-30 22:00:32.115177"], ["updated_at", "2022-07-30 22:00:32.115177"]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b9335376-2365-4c4f-8180-e46abae68eb2]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b9335376-2365-4c4f-8180-e46abae68eb2] Performing ActiveStorage::AnalyzeJob (Job ID: b9335376-2365-4c4f-8180-e46abae68eb2) from Async(default) enqueued at 2022-07-30T22:00:32Z with arguments: #<GlobalID:0x000000010fa21128 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/9>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b9335376-2365-4c4f-8180-e46abae68eb2] [36m  Disk Storage (0.4ms) [0m[34mDownloaded file from key: g7g1hyswku1xl3zcq9tmr8c5d5fc[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b9335376-2365-4c4f-8180-e46abae68eb2] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b9335376-2365-4c4f-8180-e46abae68eb2]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b9335376-2365-4c4f-8180-e46abae68eb2]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 9]]
+  [1m[36mTRANSACTION (34.1ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b9335376-2365-4c4f-8180-e46abae68eb2]   [1m[36mTRANSACTION (21.3ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b9335376-2365-4c4f-8180-e46abae68eb2] Performed ActiveStorage::AnalyzeJob (Job ID: b9335376-2365-4c4f-8180-e46abae68eb2) from Async(default) in 31.21ms
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Journeyman"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "5oz2zadefbxhttm15f8d45reohfm"], ["filename", "plumber.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 58542], ["checksum", "9E5coiXvYIf+NSL4csHwbQ=="], ["created_at", "2022-07-30 22:00:32.162033"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Journeyman"], ["record_id", 10], ["blob_id", 10], ["created_at", "2022-07-30 22:00:32.163866"]]
+  [1m[36mJourneyman Update (0.2ms)[0m  [1m[33mUPDATE "journeymen" SET "updated_at" = $1 WHERE "journeymen"."id" = $2[0m  [["updated_at", "2022-07-30 22:00:32.165690"], ["id", 10]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+[36m  Disk Storage (35.6ms) [0m[32mUploaded file to key: 5oz2zadefbxhttm15f8d45reohfm (checksum: 9E5coiXvYIf+NSL4csHwbQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 61709455-4068-48c8-95a5-59068522e142) to Async(default) with arguments: #<GlobalID:0x000000010fb51228 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/10>>
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [61709455-4068-48c8-95a5-59068522e142]   [1m[36mActiveStorage::Blob Load (2.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [61709455-4068-48c8-95a5-59068522e142] Performing ActiveStorage::AnalyzeJob (Job ID: 61709455-4068-48c8-95a5-59068522e142) from Async(default) enqueued at 2022-07-30T22:00:32Z with arguments: #<GlobalID:0x000000010ed35ec8 @uri=#<URI::GID gid://journeyman-back-end/ActiveStorage::Blob/10>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [61709455-4068-48c8-95a5-59068522e142] [36m  Disk Storage (0.3ms) [0m[34mDownloaded file from key: 5oz2zadefbxhttm15f8d45reohfm[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [61709455-4068-48c8-95a5-59068522e142] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [61709455-4068-48c8-95a5-59068522e142]   [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (12.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [61709455-4068-48c8-95a5-59068522e142]   [1m[36mActiveStorage::Blob Update (1.7ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 10]]
+  [1m[36mJourneyman Load (0.9ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [61709455-4068-48c8-95a5-59068522e142]   [1m[36mTRANSACTION (40.8ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [61709455-4068-48c8-95a5-59068522e142] Performed ActiveStorage::AnalyzeJob (Job ID: 61709455-4068-48c8-95a5-59068522e142) from Async(default) in 63.28ms
+  [1m[36mReservation Create (80.9ms)[0m  [1m[32mINSERT INTO "reservations" ("start_date", "number_days", "cost", "created_at", "updated_at", "user_id", "journeyman_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["start_date", "2022-08-07"], ["number_days", 7], ["cost", nil], ["created_at", "2022-07-30 22:00:32.283537"], ["updated_at", "2022-07-30 22:00:32.283537"], ["user_id", 1], ["journeyman_id", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mReservation Create (0.4ms)[0m  [1m[32mINSERT INTO "reservations" ("start_date", "number_days", "cost", "created_at", "updated_at", "user_id", "journeyman_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["start_date", "2022-09-07"], ["number_days", 5], ["cost", nil], ["created_at", "2022-07-30 22:00:32.397002"], ["updated_at", "2022-07-30 22:00:32.397002"], ["user_id", 2], ["journeyman_id", 2]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mReservation Load (0.6ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m

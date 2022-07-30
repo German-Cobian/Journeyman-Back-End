@@ -1,5 +1,5 @@
-user_1 = User.create(username: 'GlumpPunk09', role: 1, password: '12345')
-user_1 = User.create(username: 'BillyBoy10', role: 0, password: '67890')
+user_1 = User.create(username: 'AdminUser', role: 1, email: 'admin@gmail.com', password: "123admin")
+user_1 = User.create(username: 'RegUser', role: 0, email: 'reg@gmail.com', password: "123reg")
 
 journeyman_1 = Journeyman.create(name: 'Raul', skill: 'carpenter', country: 'Mexico', city: 'Tijuana', price: 110.0)
 journeyman_1.image.attach(io: File.open("app/assets/images/carpenter.jpeg"), filename: "carpenter.jpeg")

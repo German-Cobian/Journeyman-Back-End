@@ -41,6 +41,9 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'fast_jsonapi'
 
+# cancan is a gem for authorization in Rails
+gem 'cancancan'
+
 # Ruby linters
 gem 'rubocop', '>= 1.0', '< 2.0'
 

@@ -26,7 +26,7 @@ class V1::ReservationsController < ApplicationController
   end
 
   def create
-    reservation = Reservation.new(reservation_params)
+    reservation = current_user.reservation.new(reservation_params)
     reservation.cost = reservation.journeyman.price * reservation.number_days
 
     if reservation.save
@@ -37,16 +37,12 @@ class V1::ReservationsController < ApplicationController
   end
 
   def destroy
-    if current_user.admin?
-      reservation = Reservation.find_by(id: params[:id])
-      if reservation.nil?
-        render status: 404, json: { error: 'Reservation not found' }.to_json
-      else
-        reservation.destroy
-        render json: { message: 'Reservation deleted' }.to_json
-      end
+    reservation = Reservation.find_by(id: params[:id])
+    if reservation.nil?
+      render status: 404, json: { error: 'Reservation not found' }.to_json
     else
-      render json: { message: 'You are not authorized to perform this action' }, status: :unauthorized
+      reservation.destroy
+      render json: { message: 'Reservation deleted' }.to_json
     end
   end
 

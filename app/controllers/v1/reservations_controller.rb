@@ -26,7 +26,7 @@ class V1::ReservationsController < ApplicationController
   end
 
   def create
-    reservation = current_user.reservation.new(reservation_params)
+    reservation = Reservation.new(reservation_params)
     reservation.cost = reservation.journeyman.price * reservation.number_days
 
     if reservation.save

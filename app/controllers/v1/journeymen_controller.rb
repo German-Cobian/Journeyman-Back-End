@@ -36,12 +36,12 @@ class V1::JourneymenController < ApplicationController
     if current_user.admin?
       journeyman = Journeyman.find_by(id: params[:id])
 
-    if journeyman.nil?
-      render status: 404, json: { error: 'Journeyman not found' }.to_json
-    else
-      journeyman.destroy
-      render json: { message: 'Journeyman deleted' }.to_json
-    end
+      if journeyman.nil?
+        render status: 404, json: { error: 'Journeyman not found' }.to_json
+      else
+        journeyman.destroy
+        render json: { message: 'Journeyman deleted' }.to_json
+      end
     else
       render json: { message: 'You are not authorized to perform this action' }, status: :unauthorized
     end

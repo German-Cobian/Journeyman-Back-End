@@ -16,8 +16,8 @@ journeyman_4.image.attach(io: File.open("app/assets/images/mason.jpeg"), filenam
 journeyman_5 = Journeyman.create(name: 'Gubber', skill: 'plumber', country: 'Chile', city: 'Valparaiso', price: 95)
 journeyman_5.image.attach(io: File.open("app/assets/images/plumber.jpeg"), filename: "plumber.jpeg")
 
-reservation_1 = Reservation.create(user_id: 1, journeyman_id: 1, start_date: '07 Aug 2022 21:20:49.262680000', number_days: 7)
-reservation_2 = Reservation.create(user_id: 2, journeyman_id: 2, start_date: '07 Sep 2022 21:20:49.262680000', number_days: 5)
-reservation_3 = Reservation.create(user_id: 1, journeyman_id: 3, start_date: '07 Oct 2022 21:20:49.262680000', number_days: 3)
-reservation_4 = Reservation.create(user_id: 1, journeyman_id: 5, start_date: '07 Nov 2022 21:20:49.262680000', number_days: 9)
-reservation_5 = Reservation.create(user_id: 2, journeyman_id: 4, start_date: '07 Dec 2022 21:20:49.262680000', number_days: 6)
+reservation_1 = Reservation.create(user_id: 1, journeyman_id: 1, start_date: '07 Aug 2022 21:20:49.262680000', number_days: 7, cost: 770.0)
+reservation_2 = Reservation.create(user_id: 2, journeyman_id: 2, start_date: '07 Sep 2022 21:20:49.262680000', number_days: 5, cost: 450.0)
+reservation_3 = Reservation.create(user_id: 1, journeyman_id: 3, start_date: '07 Oct 2022 21:20:49.262680000', number_days: 3, cost: 240.0)
+reservation_4 = Reservation.create(user_id: 1, journeyman_id: 5, start_date: '07 Nov 2022 21:20:49.262680000', number_days: 9, cost: 855.0)
+reservation_5 = Reservation.create(user_id: 2, journeyman_id: 4, start_date: '07 Dec 2022 21:20:49.262680000', number_days: 6, cost: 420.0)

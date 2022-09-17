@@ -57,4 +57,5 @@ group :development do
   # gem "spring"
 end
 
+gem "aws-sdk-s3"
 gem "jsonapi-serializer", "~> 2.2"

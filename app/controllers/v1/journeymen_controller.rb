@@ -50,6 +50,6 @@ class V1::JourneymenController < ApplicationController
   private
 
   def journeyman_params
-    params.require(:journeyman).permit(:name, :skill, :country, :city, :price, :image)
+    params.permit(:name, :skill, :country, :city, :price, :image)
   end
 end

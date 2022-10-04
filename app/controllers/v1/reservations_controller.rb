@@ -2,9 +2,17 @@ class V1::ReservationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    reservations = Reservation.all
+    reservations = if current_user.admin?
+                     Reservation.all
+                   else
+                     current_user.reservations
+                   end
 
-    render json: ReservationSerializer.new(reservations).serializable_hash[:data], status: :ok
+    if reservations == []
+      render json: { message: 'No reservations found' }, status: :not_found
+    else
+      render json: ReservationSerializer.new(reservations).serializable_hash[:data], status: :ok
+    end
   end
 
   def show
@@ -30,7 +38,6 @@ class V1::ReservationsController < ApplicationController
 
   def destroy
     reservation = Reservation.find_by(id: params[:id])
-
     if reservation.nil?
       render status: 404, json: { error: 'Reservation not found' }.to_json
     else

@@ -18,23 +18,31 @@ class V1::JourneymenController < ApplicationController
   end
 
   def create
-    @journeyman = Journeyman.new(journeyman_params)
+    if current_user.admin?
+      @journeyman = Journeyman.new(journeyman_params)
 
-    if @journeyman.save
-      render json: JourneymanSerializer.new(@journeyman).serializable_hash[:data][:attributes], status: :created
+      if @journeyman.save
+        render json: JourneymanSerializer.new(@journeyman).serializable_hash[:data][:attributes], status: :created
+      else
+        render json: @journeyman.errors, status: :unprocessable_entity
+      end
     else
-      render status: 500, json: { error: 'Journeyman could not be created' }.to_json
+      render json: { message: 'You are not authorized to perform this action' }, status: :unauthorized
     end
   end
 
   def destroy
-    journeyman = Journeyman.find_by(id: params[:id])
+    if current_user.admin?
+      journeyman = Journeyman.find_by(id: params[:id])
 
-    if journeyman.nil?
-      render status: 404, json: { error: 'Journeyman not found' }.to_json
+      if journeyman.nil?
+        render status: 404, json: { error: 'Journeyman not found' }.to_json
+      else
+        journeyman.destroy
+        render json: { message: 'Journeyman deleted' }.to_json
+      end
     else
-      journeyman.destroy
-      render json: { message: 'Journeyman deleted' }.to_json
+      render json: { message: 'You are not authorized to perform this action' }, status: :unauthorized
     end
   end
 

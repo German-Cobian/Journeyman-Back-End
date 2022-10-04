@@ -2,7 +2,9 @@ class V1::ReservationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    render json: Reservation.all.to_json
+    reservations = Reservation.all
+
+    render json: ReservationSerializer.new(reservations).serializable_hash[:data], status: :ok
   end
 
   def show
@@ -11,7 +13,7 @@ class V1::ReservationsController < ApplicationController
     if reservation.nil?
       render status: 404, json: { error: 'Reservation not found' }.to_json
     else
-      render json: reservation.to_json
+      render json: ReservationSerializer.new(reservation).serializable_hash[:data][:attributes], status: :ok
     end
   end
 

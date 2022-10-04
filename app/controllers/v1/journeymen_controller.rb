@@ -2,24 +2,26 @@ class V1::JourneymenController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    render json: Journeyman.all.to_json
+    @journeymen = Journeyman.all
+
+    render json: JourneymanSerializer.new(@journeymen).serializable_hash[:data], status: :ok
   end
 
   def show
-    journeyman = Journeyman.find_by(id: params[:id])
+    @journeyman = Journeyman.find_by(id: params[:id])
 
-    if journeyman.nil?
+    if @journeyman.nil?
       render status: 404, json: { error: 'Journeyman not found' }.to_json
     else
-      render json: journeyman.to_json
+      render json: JourneymanSerializer.new(@journeyman).serializable_hash[:data][:attributes], status: :ok
     end
   end
 
   def create
-    journeyman = Journeyman.new(journeyman_params)
+    @journeyman = Journeyman.new(journeyman_params)
 
-    if journeyman.save
-      render json: journeyman.to_json
+    if @journeyman.save
+      render json: JourneymanSerializer.new(@journeyman).serializable_hash[:data][:attributes], status: :created
     else
       render status: 500, json: { error: 'Journeyman could not be created' }.to_json
     end
@@ -39,6 +41,6 @@ class V1::JourneymenController < ApplicationController
   private
 
   def journeyman_params
-    params.require(:journeyman).permit(:name, :skill, :country, :city, :price, :journeyman_pic)
+    params.require(:journeyman).permit(:name, :skill, :country, :city, :price, :image)
   end
 end

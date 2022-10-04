@@ -6,5 +6,4 @@ class Journeyman < ApplicationRecord
   validates :country, presence: true
   validates :city, presence: true
   validates :price, presence: true
-
 end

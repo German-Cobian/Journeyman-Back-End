@@ -7,7 +7,7 @@ class V1::ReservationsController < ApplicationController
 
   def show
     reservation = Reservation.find_by(id: params[:id])
-    
+
     if reservation.nil?
       render status: 404, json: { error: 'Reservation not found' }.to_json
     else

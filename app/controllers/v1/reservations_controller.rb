@@ -3,10 +3,10 @@ class V1::ReservationsController < ApplicationController
 
   def index
     reservations = if current_user.admin?
-      Reservation.all
-    else
-      current_user.reservations
-    end
+                     Reservation.all
+                   else
+                     current_user.reservations
+                   end
 
     if reservations == []
       render json: { message: 'No reservations found' }, status: :not_found
@@ -17,7 +17,7 @@ class V1::ReservationsController < ApplicationController
 
   def show
     reservation = Reservation.find_by(id: params[:id])
-    
+
     if reservation.nil?
       render status: 404, json: { error: 'Reservation not found' }.to_json
     else

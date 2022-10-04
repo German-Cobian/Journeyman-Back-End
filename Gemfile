@@ -58,4 +58,5 @@ group :development do
 end
 
 gem 'aws-sdk-s3'
+
 gem 'jsonapi-serializer', '~> 2.2'

@@ -29,7 +29,6 @@ class V1::JourneymenController < ApplicationController
     else
       render json: { message: 'You are not authorized to perform this action' }, status: :unauthorized
     end
-
   end
 
   def destroy

@@ -56,3 +56,1547 @@ FOREIGN KEY ("journeyman_id")
   [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7702323232564939545)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (31.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "german20"], ["LIMIT", 1]]
+  [1m[36mUser Create (32.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "role", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "german20"], ["role", 1], ["password", "[FILTERED]"], ["created_at", "2022-07-26 17:36:53.317273"], ["updated_at", "2022-07-26 17:36:53.317273"]]
+  [1m[36mTRANSACTION (42.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2022-07-26 10:44:06 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/doracobian/.rvm/gems/ruby-3.1.1/gems/railties-7.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/doracobian/.rvm/gems/ruby-3.1.1/gems/railties-7.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 31.1ms | Allocations: 653)
+Completed 200 OK in 318ms (Views: 97.8ms | ActiveRecord: 0.0ms | Allocations: 4955)
+
+
+Started GET "/v1/reservations" for ::1 at 2022-07-26 10:45:01 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/v1/reservations"):
+  
+Started GET "/favicon.ico" for ::1 at 2022-07-26 10:45:04 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/v1/reservations/1" for ::1 at 2022-07-26 10:45:23 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/v1/reservations/1"):
+  
+Started GET "/v1/reservations/1" for ::1 at 2022-07-26 10:46:54 -0700
+  
+SyntaxError (/Users/doracobian/CodingProjects/Provisional/Journeyman-Back-End/app/controllers/v1/reservations_controller.rb:40: syntax error, unexpected symbol literal, expecting `do' or '{' or '('
+...ermit(:user_id, journeyman_id :start_date, :number_days)
+...                              ^
+):
+  
+app/controllers/v1/reservations_controller.rb:40: syntax error, unexpected symbol literal, expecting `do' or '{' or '('
+app/controllers/v1/reservations_controller.rb:40: syntax error, unexpected symbol literal, expecting `do' or '{' or '('
+Started GET "/v1/reservations/1" for ::1 at 2022-07-26 10:47:37 -0700
+  
+SyntaxError (/Users/doracobian/CodingProjects/Provisional/Journeyman-Back-End/app/controllers/v1/reservations_controller.rb:40: syntax error, unexpected ':', expecting ')'
+...rmit(:user_id, :journeyman_id :start_date, :number_days)
+...                              ^
+/Users/doracobian/CodingProjects/Provisional/Journeyman-Back-End/app/controllers/v1/reservations_controller.rb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+...n_id :start_date, :number_days)
+...                              ^
+):
+  
+app/controllers/v1/reservations_controller.rb:40: syntax error, unexpected ':', expecting ')'
+app/controllers/v1/reservations_controller.rb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/controllers/v1/reservations_controller.rb:40: syntax error, unexpected ':', expecting ')'
+app/controllers/v1/reservations_controller.rb:40: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+Started GET "/v1/reservations/1" for ::1 at 2022-07-26 10:48:35 -0700
+Processing by V1::ReservationsController#show as JSON
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 343ms (ActiveRecord: 0.0ms | Allocations: 6984)
+
+
+  
+NameError (undefined local variable or method `days' for Reservation:Class):
+  
+app/models/reservation.rb:6:in `<class:Reservation>'
+app/models/reservation.rb:1:in `<main>'
+app/controllers/v1/reservations_controller.rb:8:in `show'
+Started GET "/v1/reservations/1" for ::1 at 2022-07-26 10:49:38 -0700
+Processing by V1::ReservationsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mReservation Load (1.0ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:8:in `show'
+Completed 404 Not Found in 90ms (Views: 0.1ms | ActiveRecord: 4.8ms | Allocations: 4058)
+
+
+Started GET "/v1/reservations" for ::1 at 2022-07-26 10:50:04 -0700
+Processing by V1::ReservationsController#index as JSON
+  [1m[36mReservation Load (11.5ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  ↳ app/controllers/v1/reservations_controller.rb:4:in `index'
+Completed 200 OK in 44ms (Views: 0.1ms | ActiveRecord: 11.5ms | Allocations: 673)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mJourneyman Load (0.5ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (28.0ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Raul"], ["skill", "carpenter"], ["country", "Mexico"], ["city", "Tijuana"], ["price", "110.0"], ["journeyman_pic", "thisPic123"], ["created_at", "2022-07-26 18:01:49.789481"], ["updated_at", "2022-07-26 18:01:49.789481"]]
+  [1m[36mTRANSACTION (44.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mReservation Load (0.6ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (22.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReservation Create (694.6ms)[0m  [1m[32mINSERT INTO "reservations" ("start_date", "number_days", "cost", "created_at", "updated_at", "user_id", "journeyman_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["start_date", "2022-08-07"], ["number_days", 7], ["cost", "770.0"], ["created_at", "2022-07-26 18:23:23.664519"], ["updated_at", "2022-07-26 18:23:23.664519"], ["user_id", 1], ["journeyman_id", 1]]
+  [1m[36mTRANSACTION (133.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/v1/reservations" for ::1 at 2022-07-26 11:27:42 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::ReservationsController#index as JSON
+  [1m[36mReservation Load (0.8ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  ↳ app/controllers/v1/reservations_controller.rb:4:in `index'
+Completed 200 OK in 167ms (Views: 0.2ms | ActiveRecord: 5.2ms | Allocations: 10338)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "GlumpPunk09"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "role", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "GlumpPunk09"], ["role", 1], ["password", "[FILTERED]"], ["created_at", "2022-07-26 18:33:58.543410"], ["updated_at", "2022-07-26 18:33:58.543410"]]
+  [1m[36mTRANSACTION (53.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "BillyBoy10"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "role", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "BillyBoy10"], ["role", 0], ["password", "[FILTERED]"], ["created_at", "2022-07-26 18:33:58.602925"], ["updated_at", "2022-07-26 18:33:58.602925"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.4ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Raul"], ["skill", "carpenter"], ["country", "Mexico"], ["city", "Tijuana"], ["price", "110.0"], ["journeyman_pic", "thisPic123"], ["created_at", "2022-07-26 18:33:58.680408"], ["updated_at", "2022-07-26 18:33:58.680408"]]
+  [1m[36mTRANSACTION (40.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.3ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Gubber"], ["skill", "electrician"], ["country", "USA"], ["city", "San Diego"], ["price", "90.0"], ["journeyman_pic", "thatPic123"], ["created_at", "2022-07-26 18:33:58.725112"], ["updated_at", "2022-07-26 18:33:58.725112"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReservation Create (0.8ms)[0m  [1m[32mINSERT INTO "reservations" ("start_date", "number_days", "cost", "created_at", "updated_at", "user_id", "journeyman_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["start_date", "2022-08-07"], ["number_days", 7], ["cost", "770.0"], ["created_at", "2022-07-26 18:33:58.917996"], ["updated_at", "2022-07-26 18:33:58.917996"], ["user_id", 1], ["journeyman_id", 1]]
+  [1m[36mTRANSACTION (40.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mReservation Create (0.4ms)[0m  [1m[32mINSERT INTO "reservations" ("start_date", "number_days", "cost", "created_at", "updated_at", "user_id", "journeyman_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["start_date", "2022-09-07"], ["number_days", 5], ["cost", "450.0"], ["created_at", "2022-07-26 18:33:58.967162"], ["updated_at", "2022-07-26 18:33:58.967162"], ["user_id", 2], ["journeyman_id", 2]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/v1/reservations" for ::1 at 2022-07-26 11:36:44 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::ReservationsController#index as JSON
+  [1m[36mReservation Load (0.7ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  ↳ app/controllers/v1/reservations_controller.rb:4:in `index'
+Completed 200 OK in 247ms (Views: 24.3ms | ActiveRecord: 4.8ms | Allocations: 10573)
+
+
+Started GET "/v1/reservations/3" for ::1 at 2022-07-26 11:37:11 -0700
+Processing by V1::ReservationsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:8:in `show'
+Completed 200 OK in 64ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 2637)
+
+
+Started DELETE "/v1/reservations/3" for 127.0.0.1 at 2022-07-26 11:38:39 -0700
+Processing by V1::ReservationsController#destroy as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mReservation Load (0.4ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/reservations_controller.rb:33:in `destroy'
+  [1m[36mReservation Destroy (0.4ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/v1/reservations_controller.rb:33:in `destroy'
+  [1m[36mTRANSACTION (40.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/v1/reservations_controller.rb:33:in `destroy'
+Completed 200 OK in 49ms (Views: 0.1ms | ActiveRecord: 41.8ms | Allocations: 2256)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (1293.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "journeyman_back_end_development"[0m
+  [1m[35m (1280.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "journeyman_back_end_test"[0m
+  [1m[35m (22534.8ms)[0m  [1m[35mCREATE DATABASE "journeyman_back_end_development" ENCODING = 'unicode'[0m
+  [1m[35m (4348.8ms)[0m  [1m[35mCREATE DATABASE "journeyman_back_end_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "journeymen" CASCADE[0m
+  [1m[35m (206.6ms)[0m  [1m[35mCREATE TABLE "journeymen" ("id" bigserial primary key, "name" character varying, "skill" character varying, "country" character varying, "city" character varying, "price" decimal, "journeyman_pic" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "reservations" CASCADE[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" bigserial primary key, "start_date" date, "number_days" integer, "cost" decimal, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint, "journeyman_id" bigint)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_journeyman_id" ON "reservations" ("journeyman_id")[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "role" integer, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (14.5ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_176dba0b83"
+FOREIGN KEY ("journeyman_id")
+  REFERENCES "journeymen" ("id")
+[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_48a92fce51"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220726164058)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220725230321),
+(20220726162935),
+(20220726163618);
+
+[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (43.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-07-26 18:41:29.548609"], ["updated_at", "2022-07-26 18:41:29.548609"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "a731338f447d286baf6eb52546caf88e37b3d0ce"], ["created_at", "2022-07-26 18:41:29.600894"], ["updated_at", "2022-07-26 18:41:29.600894"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "journeymen" CASCADE[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "journeymen" ("id" bigserial primary key, "name" character varying, "skill" character varying, "country" character varying, "city" character varying, "price" decimal, "journeyman_pic" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "reservations" CASCADE[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" bigserial primary key, "start_date" date, "number_days" integer, "cost" decimal, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint, "journeyman_id" bigint)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_journeyman_id" ON "reservations" ("journeyman_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (33.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "role" integer, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_176dba0b83"
+FOREIGN KEY ("journeyman_id")
+  REFERENCES "journeymen" ("id")
+[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_48a92fce51"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220726164058)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220725230321),
+(20220726162935),
+(20220726163618);
+
+[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-07-26 18:41:29.751226"], ["updated_at", "2022-07-26 18:41:29.751226"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2022-07-26 18:41:29.757768"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "a731338f447d286baf6eb52546caf88e37b3d0ce"], ["created_at", "2022-07-26 18:41:29.763887"], ["updated_at", "2022-07-26 18:41:29.763887"]]
+  [1m[36mTRANSACTION (13.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (145.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "GlumpPunk09"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "role", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "GlumpPunk09"], ["role", 1], ["password", "[FILTERED]"], ["created_at", "2022-07-26 18:41:30.732192"], ["updated_at", "2022-07-26 18:41:30.732192"]]
+  [1m[36mTRANSACTION (50.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "BillyBoy10"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "role", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "BillyBoy10"], ["role", 0], ["password", "[FILTERED]"], ["created_at", "2022-07-26 18:41:30.789873"], ["updated_at", "2022-07-26 18:41:30.789873"]]
+  [1m[36mTRANSACTION (40.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.8ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Raul"], ["skill", "carpenter"], ["country", "Mexico"], ["city", "Tijuana"], ["price", "110.0"], ["journeyman_pic", "thisPic123"], ["created_at", "2022-07-26 18:41:30.898341"], ["updated_at", "2022-07-26 18:41:30.898341"]]
+  [1m[36mTRANSACTION (41.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.3ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Gubber"], ["skill", "electrician"], ["country", "USA"], ["city", "San Diego"], ["price", "90.0"], ["journeyman_pic", "thatPic123"], ["created_at", "2022-07-26 18:41:30.944535"], ["updated_at", "2022-07-26 18:41:30.944535"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (8.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.4ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReservation Create (1.7ms)[0m  [1m[32mINSERT INTO "reservations" ("start_date", "number_days", "cost", "created_at", "updated_at", "user_id", "journeyman_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["start_date", "2022-08-07"], ["number_days", 7], ["cost", nil], ["created_at", "2022-07-26 18:41:31.208016"], ["updated_at", "2022-07-26 18:41:31.208016"], ["user_id", 1], ["journeyman_id", 1]]
+  [1m[36mTRANSACTION (40.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mReservation Create (0.4ms)[0m  [1m[32mINSERT INTO "reservations" ("start_date", "number_days", "cost", "created_at", "updated_at", "user_id", "journeyman_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["start_date", "2022-09-07"], ["number_days", 5], ["cost", nil], ["created_at", "2022-07-26 18:41:31.260983"], ["updated_at", "2022-07-26 18:41:31.260983"], ["user_id", 2], ["journeyman_id", 2]]
+  [1m[36mTRANSACTION (81.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (41.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "GlumpPunk09"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "BillyBoy10"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.5ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Raul"], ["skill", "carpenter"], ["country", "Mexico"], ["city", "Tijuana"], ["price", "110.0"], ["journeyman_pic", "thisPic123"], ["created_at", "2022-07-26 18:43:30.816120"], ["updated_at", "2022-07-26 18:43:30.816120"]]
+  [1m[36mTRANSACTION (40.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.3ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Gubber"], ["skill", "electrician"], ["country", "USA"], ["city", "San Diego"], ["price", "90.0"], ["journeyman_pic", "thatPic123"], ["created_at", "2022-07-26 18:43:30.861469"], ["updated_at", "2022-07-26 18:43:30.861469"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReservation Create (0.7ms)[0m  [1m[32mINSERT INTO "reservations" ("start_date", "number_days", "cost", "created_at", "updated_at", "user_id", "journeyman_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["start_date", "2022-08-07"], ["number_days", 7], ["cost", nil], ["created_at", "2022-07-26 18:43:31.051041"], ["updated_at", "2022-07-26 18:43:31.051041"], ["user_id", 1], ["journeyman_id", 1]]
+  [1m[36mTRANSACTION (40.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.6ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mReservation Create (0.6ms)[0m  [1m[32mINSERT INTO "reservations" ("start_date", "number_days", "cost", "created_at", "updated_at", "user_id", "journeyman_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["start_date", "2022-09-07"], ["number_days", 5], ["cost", nil], ["created_at", "2022-07-26 18:43:31.100571"], ["updated_at", "2022-07-26 18:43:31.100571"], ["user_id", 2], ["journeyman_id", 2]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/v1/reservations/" for ::1 at 2022-07-26 11:45:15 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::ReservationsController#index as JSON
+  [1m[36mReservation Load (0.7ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  ↳ app/controllers/v1/reservations_controller.rb:4:in `index'
+Completed 200 OK in 284ms (Views: 24.9ms | ActiveRecord: 5.2ms | Allocations: 10632)
+
+
+Started GET "/v1/reservations/4" for ::1 at 2022-07-26 11:45:43 -0700
+Processing by V1::ReservationsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:8:in `show'
+Completed 200 OK in 33ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 2622)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (33.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "journeyman_back_end_development"[0m
+  [1m[35m (65.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "journeyman_back_end_test"[0m
+  [1m[35m (6309.1ms)[0m  [1m[35mCREATE DATABASE "journeyman_back_end_development" ENCODING = 'unicode'[0m
+  [1m[35m (485.1ms)[0m  [1m[35mCREATE DATABASE "journeyman_back_end_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (29.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "journeymen" CASCADE[0m
+  [1m[35m (362.5ms)[0m  [1m[35mCREATE TABLE "journeymen" ("id" bigserial primary key, "name" character varying, "skill" character varying, "country" character varying, "city" character varying, "price" decimal, "journeyman_pic" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "reservations" CASCADE[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" bigserial primary key, "start_date" date, "number_days" integer, "cost" decimal, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint, "journeyman_id" bigint)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_journeyman_id" ON "reservations" ("journeyman_id")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "role" integer, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (74.0ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_176dba0b83"
+FOREIGN KEY ("journeyman_id")
+  REFERENCES "journeymen" ("id")
+[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_48a92fce51"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (41.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220726164058)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220725230321),
+(20220726162935),
+(20220726163618);
+
+[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (30.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-07-26 18:47:51.904900"], ["updated_at", "2022-07-26 18:47:51.904900"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "a731338f447d286baf6eb52546caf88e37b3d0ce"], ["created_at", "2022-07-26 18:47:51.943913"], ["updated_at", "2022-07-26 18:47:51.943913"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "journeymen" CASCADE[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "journeymen" ("id" bigserial primary key, "name" character varying, "skill" character varying, "country" character varying, "city" character varying, "price" decimal, "journeyman_pic" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "reservations" CASCADE[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" bigserial primary key, "start_date" date, "number_days" integer, "cost" decimal, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint, "journeyman_id" bigint)[0m
+  [1m[35m (9.6ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_journeyman_id" ON "reservations" ("journeyman_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "role" integer, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_176dba0b83"
+FOREIGN KEY ("journeyman_id")
+  REFERENCES "journeymen" ("id")
+[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_48a92fce51"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220726164058)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220725230321),
+(20220726162935),
+(20220726163618);
+
+[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-07-26 18:47:52.065697"], ["updated_at", "2022-07-26 18:47:52.065697"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2022-07-26 18:47:52.072372"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "a731338f447d286baf6eb52546caf88e37b3d0ce"], ["created_at", "2022-07-26 18:47:52.078339"], ["updated_at", "2022-07-26 18:47:52.078339"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (14.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "GlumpPunk09"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "role", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "GlumpPunk09"], ["role", 1], ["password", "[FILTERED]"], ["created_at", "2022-07-26 18:47:52.582600"], ["updated_at", "2022-07-26 18:47:52.582600"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "BillyBoy10"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "role", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "BillyBoy10"], ["role", 0], ["password", "[FILTERED]"], ["created_at", "2022-07-26 18:47:52.589253"], ["updated_at", "2022-07-26 18:47:52.589253"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.8ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Raul"], ["skill", "carpenter"], ["country", "Mexico"], ["city", "Tijuana"], ["price", "110.0"], ["journeyman_pic", "thisPic123"], ["created_at", "2022-07-26 18:47:52.699140"], ["updated_at", "2022-07-26 18:47:52.699140"]]
+  [1m[36mTRANSACTION (39.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.3ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Gubber"], ["skill", "electrician"], ["country", "USA"], ["city", "San Diego"], ["price", "90.0"], ["journeyman_pic", "thatPic123"], ["created_at", "2022-07-26 18:47:52.753840"], ["updated_at", "2022-07-26 18:47:52.753840"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReservation Create (1.1ms)[0m  [1m[32mINSERT INTO "reservations" ("start_date", "number_days", "cost", "created_at", "updated_at", "user_id", "journeyman_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["start_date", "2022-08-07"], ["number_days", 7], ["cost", nil], ["created_at", "2022-07-26 18:47:52.994026"], ["updated_at", "2022-07-26 18:47:52.994026"], ["user_id", 1], ["journeyman_id", 1]]
+  [1m[36mTRANSACTION (39.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mReservation Create (0.4ms)[0m  [1m[32mINSERT INTO "reservations" ("start_date", "number_days", "cost", "created_at", "updated_at", "user_id", "journeyman_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["start_date", "2022-09-07"], ["number_days", 5], ["cost", nil], ["created_at", "2022-07-26 18:47:53.045233"], ["updated_at", "2022-07-26 18:47:53.045233"], ["user_id", 2], ["journeyman_id", 2]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (46.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "GlumpPunk09"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "BillyBoy10"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.7ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Raul"], ["skill", "carpenter"], ["country", "Mexico"], ["city", "Tijuana"], ["price", "110.0"], ["journeyman_pic", "thisPic123"], ["created_at", "2022-07-26 18:49:39.911520"], ["updated_at", "2022-07-26 18:49:39.911520"]]
+  [1m[36mTRANSACTION (40.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.3ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Gubber"], ["skill", "electrician"], ["country", "USA"], ["city", "San Diego"], ["price", "90.0"], ["journeyman_pic", "thatPic123"], ["created_at", "2022-07-26 18:49:39.989329"], ["updated_at", "2022-07-26 18:49:39.989329"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReservation Create (0.9ms)[0m  [1m[32mINSERT INTO "reservations" ("start_date", "number_days", "cost", "created_at", "updated_at", "user_id", "journeyman_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["start_date", "2022-08-07"], ["number_days", 7], ["cost", nil], ["created_at", "2022-07-26 18:49:40.193406"], ["updated_at", "2022-07-26 18:49:40.193406"], ["user_id", 1], ["journeyman_id", 1]]
+  [1m[36mTRANSACTION (22.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mReservation Create (0.4ms)[0m  [1m[32mINSERT INTO "reservations" ("start_date", "number_days", "cost", "created_at", "updated_at", "user_id", "journeyman_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["start_date", "2022-09-07"], ["number_days", 5], ["cost", nil], ["created_at", "2022-07-26 18:49:40.236218"], ["updated_at", "2022-07-26 18:49:40.236218"], ["user_id", 2], ["journeyman_id", 2]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/v1/reservations/" for ::1 at 2022-07-26 11:51:13 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::ReservationsController#index as JSON
+  [1m[36mReservation Load (0.9ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  ↳ app/controllers/v1/reservations_controller.rb:4:in `index'
+Completed 200 OK in 535ms (Views: 36.0ms | ActiveRecord: 9.4ms | Allocations: 10632)
+
+
+Started GET "/v1/reservations/4" for ::1 at 2022-07-26 11:51:42 -0700
+Processing by V1::ReservationsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:8:in `show'
+Completed 200 OK in 51ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 2622)
+
+
+Started POST "/v1/reservations/" for 127.0.0.1 at 2022-07-26 11:57:14 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::ReservationsController#create as JSON
+  Parameters: {"user_id"=>"1", "journeyman_id"=>"2", "start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "cost"=>"810.0", "reservation"=>{"start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "cost"=>"810.0", "user_id"=>"1", "journeyman_id"=>"2"}}
+[31mUnpermitted parameter: :cost. Context: { controller: V1::ReservationsController, action: create, request: #<ActionDispatch::Request:0x0000000115a71af0>, params: {"user_id"=>"1", "journeyman_id"=>"2", "start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "cost"=>"810.0", "format"=>"json", "controller"=>"v1/reservations", "action"=>"create", "reservation"=>{"start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "cost"=>"810.0", "user_id"=>"1", "journeyman_id"=>"2"}} }[0m
+  [1m[36mJourneyman Load (0.8ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+Completed 500 Internal Server Error in 394ms (Views: 0.4ms | ActiveRecord: 12.4ms | Allocations: 22688)
+
+
+Started POST "/v1/reservations/" for 127.0.0.1 at 2022-07-26 11:59:39 -0700
+Processing by V1::ReservationsController#create as JSON
+  Parameters: {"reservation"=>{"user_id"=>"1", "journeyman_id"=>"2", "start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "cost"=>"810.0"}}
+[31mUnpermitted parameter: :cost. Context: { controller: V1::ReservationsController, action: create, request: #<ActionDispatch::Request:0x00000001151b9bd8>, params: {"reservation"=>{"user_id"=>"1", "journeyman_id"=>"2", "start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "cost"=>"810.0"}, "format"=>"json", "controller"=>"v1/reservations", "action"=>"create"} }[0m
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+Completed 500 Internal Server Error in 10ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 3136)
+
+
+Started POST "/v1/reservations/" for 127.0.0.1 at 2022-07-26 11:59:40 -0700
+Processing by V1::ReservationsController#create as JSON
+  Parameters: {"reservation"=>{"user_id"=>"1", "journeyman_id"=>"2", "start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "cost"=>"810.0"}}
+[31mUnpermitted parameter: :cost. Context: { controller: V1::ReservationsController, action: create, request: #<ActionDispatch::Request:0x000000011542b8d0>, params: {"reservation"=>{"user_id"=>"1", "journeyman_id"=>"2", "start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "cost"=>"810.0"}, "format"=>"json", "controller"=>"v1/reservations", "action"=>"create"} }[0m
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+Completed 500 Internal Server Error in 12ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 3084)
+
+
+Started POST "/v1/reservations/" for 127.0.0.1 at 2022-07-26 11:59:42 -0700
+Processing by V1::ReservationsController#create as JSON
+  Parameters: {"reservation"=>{"user_id"=>"1", "journeyman_id"=>"2", "start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "cost"=>"810.0"}}
+[31mUnpermitted parameter: :cost. Context: { controller: V1::ReservationsController, action: create, request: #<ActionDispatch::Request:0x00000001157cb418>, params: {"reservation"=>{"user_id"=>"1", "journeyman_id"=>"2", "start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "cost"=>"810.0"}, "format"=>"json", "controller"=>"v1/reservations", "action"=>"create"} }[0m
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+Completed 500 Internal Server Error in 6ms (Views: 0.1ms | ActiveRecord: 0.7ms | Allocations: 3084)
+
+
+Started POST "/v1/reservations/" for 127.0.0.1 at 2022-07-26 12:00:29 -0700
+Processing by V1::ReservationsController#create as JSON
+  Parameters: {"user_id"=>"1", "journeyman_id"=>"2", "start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "cost"=>"810.0", "reservation"=>{"start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "cost"=>"810.0", "user_id"=>"1", "journeyman_id"=>"2"}}
+[31mUnpermitted parameter: :cost. Context: { controller: V1::ReservationsController, action: create, request: #<ActionDispatch::Request:0x00000001158c8d20>, params: {"user_id"=>"1", "journeyman_id"=>"2", "start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "cost"=>"810.0", "format"=>"json", "controller"=>"v1/reservations", "action"=>"create", "reservation"=>{"start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "cost"=>"810.0", "user_id"=>"1", "journeyman_id"=>"2"}} }[0m
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+Completed 500 Internal Server Error in 6ms (Views: 0.1ms | ActiveRecord: 0.7ms | Allocations: 3104)
+
+
+Started POST "/v1/reservations/" for 127.0.0.1 at 2022-07-26 12:00:43 -0700
+Processing by V1::ReservationsController#create as JSON
+  Parameters: {"user_id"=>"1", "journeyman_id"=>"2", "start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "cost"=>"810.0", "reservation"=>{"start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "cost"=>"810.0", "user_id"=>"1", "journeyman_id"=>"2"}}
+[31mUnpermitted parameter: :cost. Context: { controller: V1::ReservationsController, action: create, request: #<ActionDispatch::Request:0x000000011599b680>, params: {"user_id"=>"1", "journeyman_id"=>"2", "start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "cost"=>"810.0", "format"=>"json", "controller"=>"v1/reservations", "action"=>"create", "reservation"=>{"start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "cost"=>"810.0", "user_id"=>"1", "journeyman_id"=>"2"}} }[0m
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+Completed 500 Internal Server Error in 29ms (Views: 0.1ms | ActiveRecord: 0.8ms | Allocations: 3085)
+
+
+Started POST "/v1/reservations/" for 127.0.0.1 at 2022-07-26 12:01:16 -0700
+Processing by V1::ReservationsController#create as JSON
+  Parameters: {"user_id"=>"1", "journeyman_id"=>"2", "start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "reservation"=>{"start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "user_id"=>"1", "journeyman_id"=>"2"}}
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+Completed 500 Internal Server Error in 6ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 2967)
+
+
+Started POST "/v1/reservations/" for 127.0.0.1 at 2022-07-26 12:02:46 -0700
+Processing by V1::ReservationsController#create as JSON
+  Parameters: {"user_id"=>"1", "journeyman_id"=>"2", "start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "reservation"=>{"start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9", "user_id"=>"1", "journeyman_id"=>"2"}}
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+Completed 500 Internal Server Error in 9ms (Views: 0.1ms | ActiveRecord: 0.7ms | Allocations: 2967)
+
+
+Started POST "/v1/reservations/" for 127.0.0.1 at 2022-07-26 12:03:32 -0700
+Processing by V1::ReservationsController#create as JSON
+  Parameters: {"reservation"=>{"user_id"=>"1", "journeyman_id"=>"2", "start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9"}}
+  [1m[36mJourneyman Load (1.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+Completed 500 Internal Server Error in 10ms (Views: 0.1ms | ActiveRecord: 1.8ms | Allocations: 2967)
+
+
+Started POST "/v1/reservations/" for 127.0.0.1 at 2022-07-26 12:03:47 -0700
+Processing by V1::ReservationsController#create as JSON
+  Parameters: {"reservation"=>{"user_id"=>"1", "journeyman_id"=>"2", "start_date"=>"07 Jul 2022 21:20:49.262680000", "number_days"=>"9"}}
+  [1m[36mJourneyman Load (0.4ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+Completed 500 Internal Server Error in 10ms (Views: 0.1ms | ActiveRecord: 1.6ms | Allocations: 2967)
+
+
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mJourneyman Load (0.6ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen"[0m
+  [1m[36mReservation Load (0.6ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mReservation Create (0.8ms)[0m  [1m[32mINSERT INTO "reservations" ("start_date", "number_days", "cost", "created_at", "updated_at", "user_id", "journeyman_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["start_date", "2022-10-07"], ["number_days", 9], ["cost", nil], ["created_at", "2022-07-26 19:08:00.474726"], ["updated_at", "2022-07-26 19:08:00.474726"], ["user_id", 1], ["journeyman_id", 2]]
+  [1m[36mTRANSACTION (40.6ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/v1/reservations/6" for 127.0.0.1 at 2022-07-26 12:10:19 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/v1/reservations/6"):
+  
+Started POST "/v1/reservations/" for 127.0.0.1 at 2022-07-26 12:10:37 -0700
+Processing by V1::ReservationsController#create as JSON
+  Parameters: {"reservation"=>{"user_id"=>"1", "journeyman_id"=>"2", "start_date"=>"07 Nov 2022 21:20:49.262680000", "number_days"=>"11"}}
+  [1m[36mJourneyman Load (0.6ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mReservation Create (1.0ms)[0m  [1m[32mINSERT INTO "reservations" ("start_date", "number_days", "cost", "created_at", "updated_at", "user_id", "journeyman_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["start_date", "2022-11-07"], ["number_days", 11], ["cost", "990.0"], ["created_at", "2022-07-26 19:10:38.677311"], ["updated_at", "2022-07-26 19:10:38.677311"], ["user_id", 1], ["journeyman_id", 2]]
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (22.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+Completed 200 OK in 412ms (Views: 0.2ms | ActiveRecord: 36.8ms | Allocations: 24549)
+
+
+Started GET "/v1/reservations/4" for ::1 at 2022-07-26 12:10:58 -0700
+Processing by V1::ReservationsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mReservation Load (0.6ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:8:in `show'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 1182)
+
+
+Started GET "/v1/reservations/" for ::1 at 2022-07-26 12:11:06 -0700
+Processing by V1::ReservationsController#index as JSON
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  ↳ app/controllers/v1/reservations_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1313)
+
+
+Started GET "/v1/journeymen" for ::1 at 2022-07-26 12:28:43 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::JourneymenController#index as JSON
+  [1m[36mJourneyman Load (0.7ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen"[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:4:in `index'
+Completed 200 OK in 305ms (Views: 4.6ms | ActiveRecord: 5.2ms | Allocations: 12095)
+
+
+Started POST "/v1/journeymen" for 127.0.0.1 at 2022-07-26 12:34:20 -0700
+Processing by V1::JourneymenController#create as JSON
+  Parameters: {"id"=>5, "name"=>"Glibby", "skill"=>"masonry", "country"=>"Argentina", "city"=>"Cordoba", "price"=>"70.0", "journeyman_pic"=>"therePic123", "journeyman"=>{"id"=>5, "name"=>"Glibby", "skill"=>"masonry", "country"=>"Argentina", "city"=>"Cordoba", "price"=>"70.0", "journeyman_pic"=>"therePic123"}}
+[31mUnpermitted parameter: :id. Context: { controller: V1::JourneymenController, action: create, request: #<ActionDispatch::Request:0x000000010d718730>, params: {"id"=>5, "name"=>"Glibby", "skill"=>"masonry", "country"=>"Argentina", "city"=>"Cordoba", "price"=>"70.0", "journeyman_pic"=>"therePic123", "format"=>"json", "controller"=>"v1/journeymen", "action"=>"create", "journeyman"=>{"id"=>5, "name"=>"Glibby", "skill"=>"masonry", "country"=>"Argentina", "city"=>"Cordoba", "price"=>"70.0", "journeyman_pic"=>"therePic123"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:20:in `create'
+  [1m[36mJourneyman Create (0.8ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Glibby"], ["skill", "masonry"], ["country", "Argentina"], ["city", "Cordoba"], ["price", "70.0"], ["journeyman_pic", "therePic123"], ["created_at", "2022-07-26 19:34:20.982986"], ["updated_at", "2022-07-26 19:34:20.982986"]]
+  ↳ app/controllers/v1/journeymen_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (301.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:20:in `create'
+Completed 200 OK in 310ms (Views: 0.1ms | ActiveRecord: 302.4ms | Allocations: 3246)
+
+
+Started GET "/v1/journeymen" for ::1 at 2022-07-26 12:34:39 -0700
+Processing by V1::JourneymenController#index as JSON
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen"[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1360)
+
+
+Started DELETE "/v1/journeymen/4" for 127.0.0.1 at 2022-07-26 12:35:00 -0700
+Processing by V1::JourneymenController#destroy as JSON
+  Parameters: {"id"=>"4", "name"=>"Glibby", "skill"=>"masonry", "country"=>"Argentina", "city"=>"Cordoba", "price"=>"70.0", "journeyman_pic"=>"therePic123", "journeyman"=>{"id"=>"4", "name"=>"Glibby", "skill"=>"masonry", "country"=>"Argentina", "city"=>"Cordoba", "price"=>"70.0", "journeyman_pic"=>"therePic123"}}
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/v1/journeymen_controller.rb:28:in `destroy'
+Completed 500 Internal Server Error in 717ms (ActiveRecord: 0.4ms | Allocations: 4738)
+
+
+  
+NameError (undefined local variable or method `reservation' for #<V1::JourneymenController:0x000000000094e8>
+
+      reservation.destroy
+      ^^^^^^^^^^^
+Did you mean?  reset_session):
+  
+app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Started DELETE "/v1/journeymen/4" for 127.0.0.1 at 2022-07-26 12:35:19 -0700
+Processing by V1::JourneymenController#destroy as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/v1/journeymen_controller.rb:28:in `destroy'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.3ms | Allocations: 2900)
+
+
+  
+NameError (undefined local variable or method `reservation' for #<V1::JourneymenController:0x00000000009560>
+
+      reservation.destroy
+      ^^^^^^^^^^^
+Did you mean?  reset_session):
+  
+app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Started DELETE "/v1/journeymen/2" for 127.0.0.1 at 2022-07-26 12:35:28 -0700
+Processing by V1::JourneymenController#destroy as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mJourneyman Load (31.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/journeymen_controller.rb:28:in `destroy'
+Completed 500 Internal Server Error in 64ms (ActiveRecord: 31.2ms | Allocations: 2896)
+
+
+  
+NameError (undefined local variable or method `reservation' for #<V1::JourneymenController:0x00000000009600>
+
+      reservation.destroy
+      ^^^^^^^^^^^
+Did you mean?  reset_session):
+  
+app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Started DELETE "/v1/journeymen/4" for 127.0.0.1 at 2022-07-26 12:36:19 -0700
+Processing by V1::JourneymenController#destroy as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mJourneyman Load (0.6ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/v1/journeymen_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Load (0.6ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."journeyman_id" = $1[0m  [["journeyman_id", 4]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Completed 500 Internal Server Error in 492ms (ActiveRecord: 74.7ms | Allocations: 15248)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation "active_storage_attachments" does not exist
+LINE 9:  WHERE a.attrelid = '"active_storage_attachments"'::regclass
+                            ^
+):
+  
+app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Started DELETE "/v1/journeymen/4" for 127.0.0.1 at 2022-07-26 12:37:56 -0700
+Processing by V1::JourneymenController#destroy as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/v1/journeymen_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Load (0.4ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."journeyman_id" = $1[0m  [["journeyman_id", 4]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Completed 500 Internal Server Error in 200ms (ActiveRecord: 33.9ms | Allocations: 11636)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation "active_storage_attachments" does not exist
+LINE 9:  WHERE a.attrelid = '"active_storage_attachments"'::regclass
+                            ^
+):
+  
+app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Started GET "/v1/journeymen/4" for ::1 at 2022-07-26 12:38:34 -0700
+Processing by V1::JourneymenController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mJourneyman Load (0.4ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/v1/journeymen_controller.rb:8:in `show'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 871)
+
+
+Started DELETE "/v1/journeymen/2" for 127.0.0.1 at 2022-07-26 12:39:48 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::JourneymenController#destroy as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mJourneyman Load (0.4ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/journeymen_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Load (0.7ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."journeyman_id" = $1[0m  [["journeyman_id", 2]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Destroy (0.6ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Destroy (0.4ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Destroy (0.2ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Destroy (0.4ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = $1[0m  [["id", 6]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Completed 500 Internal Server Error in 544ms (ActiveRecord: 54.8ms | Allocations: 27447)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation "active_storage_attachments" does not exist
+LINE 9:  WHERE a.attrelid = '"active_storage_attachments"'::regclass
+                            ^
+):
+  
+app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Started DELETE "/v1/journeymen/2" for 127.0.0.1 at 2022-07-26 12:41:59 -0700
+Processing by V1::JourneymenController#destroy as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/journeymen_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Load (0.7ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."journeyman_id" = $1[0m  [["journeyman_id", 2]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Destroy (0.3ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Destroy (0.3ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Destroy (0.5ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mReservation Destroy (0.4ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = $1[0m  [["id", 6]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mJourneyman Destroy (1.4ms)[0m  [1m[31mDELETE FROM "journeymen" WHERE "journeymen"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:33:in `destroy'
+Completed 200 OK in 155ms (Views: 0.2ms | ActiveRecord: 13.6ms | Allocations: 14007)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviseToUsers (20220726203727)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (47.3ms)[0m  [1m[35mALTER TABLE "users" ADD "email" character varying DEFAULT '' NOT NULL[0m
+  [1m[35m (4.8ms)[0m  [1m[35mALTER TABLE "users" ADD "encrypted_password" character varying DEFAULT '' NOT NULL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" timestamp(6)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_created_at" timestamp(6)[0m
+  [1m[35m (147.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7702323232564939545)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (47.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviseToUsers (20220726203727)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (33.4ms)[0m  [1m[35mALTER TABLE "users" ADD "email" character varying DEFAULT '' NOT NULL[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "encrypted_password" character varying DEFAULT '' NOT NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" timestamp(6)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_created_at" timestamp(6)[0m
+  [1m[35m (40.0ms)[0m  [1m[35mCREATE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (37.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220726203727"]]
+  [1m[36mTRANSACTION (20.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (276.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "journeyman_back_end_development"[0m
+  [1m[35m (91.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "journeyman_back_end_test"[0m
+  [1m[35m (2397.6ms)[0m  [1m[35mCREATE DATABASE "journeyman_back_end_development" ENCODING = 'unicode'[0m
+  [1m[35m (170.3ms)[0m  [1m[35mCREATE DATABASE "journeyman_back_end_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "journeymen" CASCADE[0m
+  [1m[35m (35.7ms)[0m  [1m[35mCREATE TABLE "journeymen" ("id" bigserial primary key, "name" character varying, "skill" character varying, "country" character varying, "city" character varying, "price" decimal, "journeyman_pic" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "reservations" CASCADE[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" bigserial primary key, "start_date" date, "number_days" integer, "cost" decimal, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint, "journeyman_id" bigint)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_journeyman_id" ON "reservations" ("journeyman_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "role" integer, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6))[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_176dba0b83"
+FOREIGN KEY ("journeyman_id")
+  REFERENCES "journeymen" ("id")
+[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_48a92fce51"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220726203727)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220725230321),
+(20220726162935),
+(20220726163618),
+(20220726164058);
+
+[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-07-26 21:02:40.762020"], ["updated_at", "2022-07-26 21:02:40.762020"]]
+  [1m[36mTRANSACTION (40.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "625f12545c5171e1c8d372c15cf82a42a0ab97de"], ["created_at", "2022-07-26 21:02:40.833931"], ["updated_at", "2022-07-26 21:02:40.833931"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "journeymen" CASCADE[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "journeymen" ("id" bigserial primary key, "name" character varying, "skill" character varying, "country" character varying, "city" character varying, "price" decimal, "journeyman_pic" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "reservations" CASCADE[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" bigserial primary key, "start_date" date, "number_days" integer, "cost" decimal, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint, "journeyman_id" bigint)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_journeyman_id" ON "reservations" ("journeyman_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "role" integer, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6))[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (27.4ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_176dba0b83"
+FOREIGN KEY ("journeyman_id")
+  REFERENCES "journeymen" ("id")
+[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_48a92fce51"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220726203727)[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220725230321),
+(20220726162935),
+(20220726163618),
+(20220726164058);
+
+[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-07-26 21:02:40.974448"], ["updated_at", "2022-07-26 21:02:40.974448"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2022-07-26 21:02:40.980695"], ["key", "environment"]]
+  [1m[36mTRANSACTION (22.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "625f12545c5171e1c8d372c15cf82a42a0ab97de"], ["created_at", "2022-07-26 21:02:41.009342"], ["updated_at", "2022-07-26 21:02:41.009342"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (135.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddJtiToUsers (20220726211239)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (25.6ms)[0m  [1m[35mALTER TABLE "users" ADD "jti" character varying NOT NULL[0m
+  [1m[35m (21.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_jti" ON "users" ("jti")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (23.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220726211239"]]
+  [1m[36mTRANSACTION (21.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (12.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "GlumpPunk09"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "BillyBoy10"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (45.8ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Raul"], ["skill", "carpenter"], ["country", "Mexico"], ["city", "Tijuana"], ["price", "110.0"], ["journeyman_pic", "thisPic123"], ["created_at", "2022-07-26 21:41:40.828219"], ["updated_at", "2022-07-26 21:41:40.828219"]]
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.3ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Gubber"], ["skill", "electrician"], ["country", "USA"], ["city", "San Diego"], ["price", "90.0"], ["journeyman_pic", "thatPic123"], ["created_at", "2022-07-26 21:41:40.899272"], ["updated_at", "2022-07-26 21:41:40.899272"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "GlumpPunk09"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "BillyBoy10"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.5ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Raul"], ["skill", "carpenter"], ["country", "Mexico"], ["city", "Tijuana"], ["price", "110.0"], ["journeyman_pic", "thisPic123"], ["created_at", "2022-07-26 21:44:22.392152"], ["updated_at", "2022-07-26 21:44:22.392152"]]
+  [1m[36mTRANSACTION (40.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.3ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Gubber"], ["skill", "electrician"], ["country", "USA"], ["city", "San Diego"], ["price", "90.0"], ["journeyman_pic", "thatPic123"], ["created_at", "2022-07-26 21:44:22.436737"], ["updated_at", "2022-07-26 21:44:22.436737"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "GlumpPunk09"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "BillyBoy10"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.5ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Raul"], ["skill", "carpenter"], ["country", "Mexico"], ["city", "Tijuana"], ["price", "110.0"], ["journeyman_pic", "thisPic123"], ["created_at", "2022-07-26 21:45:48.981068"], ["updated_at", "2022-07-26 21:45:48.981068"]]
+  [1m[36mTRANSACTION (35.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.3ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Gubber"], ["skill", "electrician"], ["country", "USA"], ["city", "San Diego"], ["price", "90.0"], ["journeyman_pic", "thatPic123"], ["created_at", "2022-07-26 21:45:49.021172"], ["updated_at", "2022-07-26 21:45:49.021172"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mJourneyman Load (0.5ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen"[0m
+  [1m[36mUser Load (15.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mReservation Load (0.6ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+Started POST "/v1/users" for 127.0.0.1 at 2022-07-26 14:51:32 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/v1/users"):
+  
+Started POST "/users" for 127.0.0.1 at 2022-07-26 14:51:48 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/sign_up" for 127.0.0.1 at 2022-07-26 14:52:46 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/sign_up"):
+  
+Started POST "/signup" for 127.0.0.1 at 2022-07-26 14:56:41 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Users::RegistrationsController#create as */*
+  Parameters: {"user"=>{"username"=>"Blinky", "email"=>"blinky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"Blinky", "email"=>"blinky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameters: :username, :role. Context: { controller: Users::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x000000010ad97960>, params: {"user"=>{"username"=>"Blinky", "email"=>"blinky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}, "controller"=>"users/registrations", "action"=>"create", "registration"=>{"user"=>{"username"=>"Blinky", "email"=>"blinky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "blinky@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Create (30.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "role", "password", "created_at", "updated_at", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "jti") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["username", nil], ["role", nil], ["password", "[FILTERED]"], ["created_at", "2022-07-26 21:56:43.448150"], ["updated_at", "2022-07-26 21:56:43.448150"], ["email", "blinky@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["jti", nil]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 553ms (ActiveRecord: 37.3ms | Allocations: 18013)
+
+
+  
+ActiveRecord::NotNullViolation (PG::NotNullViolation: ERROR:  null value in column "jti" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (1, null, null, null, 2022-07-26 21:56:43.44815, 2022-07-26 21:56:43.44815, blinky@gmail.com, $2a$12$Z3/cZ47ERy2VDQhuCYUPbuHvvKeMkP1Q9qOWKZLYk0cKToQfzO71W, null, null, null, null).
+):
+  
+activerecord (7.0.3.1) lib/active_record/connection_adapters/postgresql_adapter.rb:768:in `exec_params'
+activerecord (7.0.3.1) lib/active_record/connection_adapters/postgresql_adapter.rb:768:in `block (2 levels) in exec_no_cache'
+activesupport (7.0.3.1) lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+activesupport (7.0.3.1) lib/active_support/dependencies/interlock.rb:41:in `permit_concurrent_loads'
+activerecord (7.0.3.1) lib/active_record/connection_adapters/postgresql_adapter.rb:767:in `block in exec_no_cache'
+activesupport (7.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+activesupport (7.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+activesupport (7.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+activesupport (7.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+activerecord (7.0.3.1) lib/active_record/connection_adapters/abstract_adapter.rb:765:in `block in log'
+activesupport (7.0.3.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activerecord (7.0.3.1) lib/active_record/connection_adapters/abstract_adapter.rb:756:in `log'
+activerecord (7.0.3.1) lib/active_record/connection_adapters/postgresql_adapter.rb:766:in `exec_no_cache'
+activerecord (7.0.3.1) lib/active_record/connection_adapters/postgresql_adapter.rb:745:in `execute_and_clear'
+activerecord (7.0.3.1) lib/active_record/connection_adapters/postgresql/database_statements.rb:54:in `exec_query'
+activerecord (7.0.3.1) lib/active_record/connection_adapters/abstract/database_statements.rb:132:in `exec_insert'
+activerecord (7.0.3.1) lib/active_record/connection_adapters/postgresql/database_statements.rb:92:in `exec_insert'
+activerecord (7.0.3.1) lib/active_record/connection_adapters/abstract/database_statements.rb:167:in `insert'
+activerecord (7.0.3.1) lib/active_record/connection_adapters/abstract/query_cache.rb:22:in `insert'
+activerecord (7.0.3.1) lib/active_record/persistence.rb:496:in `_insert_record'
+activerecord (7.0.3.1) lib/active_record/persistence.rb:1096:in `_create_record'
+activerecord (7.0.3.1) lib/active_record/counter_cache.rb:166:in `_create_record'
+activerecord (7.0.3.1) lib/active_record/locking/optimistic.rb:79:in `_create_record'
+activerecord (7.0.3.1) lib/active_record/attribute_methods/dirty.rb:222:in `_create_record'
+activerecord (7.0.3.1) lib/active_record/callbacks.rb:461:in `block in _create_record'
+activesupport (7.0.3.1) lib/active_support/callbacks.rb:107:in `run_callbacks'
+activesupport (7.0.3.1) lib/active_support/callbacks.rb:929:in `_run_create_callbacks'
+activerecord (7.0.3.1) lib/active_record/callbacks.rb:461:in `_create_record'
+activerecord (7.0.3.1) lib/active_record/timestamp.rb:108:in `_create_record'
+activerecord (7.0.3.1) lib/active_record/persistence.rb:1067:in `create_or_update'
+activerecord (7.0.3.1) lib/active_record/callbacks.rb:457:in `block in create_or_update'
+activesupport (7.0.3.1) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+activerecord (7.0.3.1) lib/active_record/autosave_association.rb:370:in `around_save_collection_association'
+activesupport (7.0.3.1) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.3.1) lib/active_support/callbacks.rb:138:in `run_callbacks'
+activesupport (7.0.3.1) lib/active_support/callbacks.rb:929:in `_run_save_callbacks'
+activerecord (7.0.3.1) lib/active_record/callbacks.rb:457:in `create_or_update'
+activerecord (7.0.3.1) lib/active_record/timestamp.rb:126:in `create_or_update'
+activerecord (7.0.3.1) lib/active_record/persistence.rb:615:in `save'
+activerecord (7.0.3.1) lib/active_record/validations.rb:47:in `save'
+activerecord (7.0.3.1) lib/active_record/transactions.rb:298:in `block in save'
+activerecord (7.0.3.1) lib/active_record/transactions.rb:354:in `block in with_transaction_returning_status'
+activerecord (7.0.3.1) lib/active_record/connection_adapters/abstract/transaction.rb:319:in `block in within_new_transaction'
+activesupport (7.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+activesupport (7.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+activesupport (7.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+activesupport (7.0.3.1) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+activerecord (7.0.3.1) lib/active_record/connection_adapters/abstract/transaction.rb:317:in `within_new_transaction'
+activerecord (7.0.3.1) lib/active_record/connection_adapters/abstract/database_statements.rb:316:in `transaction'
+activerecord (7.0.3.1) lib/active_record/transactions.rb:350:in `with_transaction_returning_status'
+activerecord (7.0.3.1) lib/active_record/transactions.rb:298:in `save'
+activerecord (7.0.3.1) lib/active_record/suppressor.rb:50:in `save'
+devise (4.8.1) app/controllers/devise/registrations_controller.rb:19:in `create'
+actionpack (7.0.3.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (7.0.3.1) lib/abstract_controller/base.rb:215:in `process_action'
+actionpack (7.0.3.1) lib/action_controller/metal/rendering.rb:53:in `process_action'
+actionpack (7.0.3.1) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+activesupport (7.0.3.1) lib/active_support/callbacks.rb:107:in `run_callbacks'
+actionpack (7.0.3.1) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.3.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.3.1) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.3.1) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.3.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.3.1) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.3.1) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.3.1) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.3.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.3.1) lib/abstract_controller/base.rb:151:in `process'
+actionpack (7.0.3.1) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.3.1) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.3.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.3.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.3.1) lib/action_dispatch/routing/mapper.rb:18:in `block in <class:Constraints>'
+actionpack (7.0.3.1) lib/action_dispatch/routing/mapper.rb:48:in `serve'
+actionpack (7.0.3.1) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.3.1) lib/action_dispatch/routing/route_set.rb:852:in `call'
+warden-jwt_auth (0.6.0) lib/warden/jwt_auth/middleware/token_dispatcher.rb:20:in `call'
+warden-jwt_auth (0.6.0) lib/warden/jwt_auth/middleware/revocation_manager.rb:21:in `call'
+rack (2.2.4) lib/rack/builder.rb:244:in `call'
+warden-jwt_auth (0.6.0) lib/warden/jwt_auth/middleware.rb:22:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+activerecord (7.0.3.1) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3.1) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3.1) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3.1) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3.1) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3.1) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3.1) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3.1) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (7.0.3.1) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/signup" for 127.0.0.1 at 2022-07-26 15:06:51 -0700
+Processing by Users::RegistrationsController#create as */*
+  Parameters: {"user"=>{"username"=>"Blinky", "email"=>"blinky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"Blinky", "email"=>"blinky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameters: :username, :role. Context: { controller: Users::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x000000010a79f8c8>, params: {"user"=>{"username"=>"Blinky", "email"=>"blinky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}, "controller"=>"users/registrations", "action"=>"create", "registration"=>{"user"=>{"username"=>"Blinky", "email"=>"blinky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}}} }[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "blinky@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Create (64.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "role", "password", "created_at", "updated_at", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "jti") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["username", nil], ["role", nil], ["password", "[FILTERED]"], ["created_at", "2022-07-26 22:06:52.589055"], ["updated_at", "2022-07-26 22:06:52.589055"], ["email", "blinky@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["jti", "4d810ded-84c2-4623-9609-f46b0c481cf8"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 594ms (Views: 71.7ms | ActiveRecord: 148.8ms | Allocations: 13048)
+
+
+Started POST "/signup" for 127.0.0.1 at 2022-07-26 15:08:09 -0700
+Processing by Users::RegistrationsController#create as */*
+  Parameters: {"user"=>{"username"=>"Gumby", "email"=>"gumby@gmail.com", "role"=>1, "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"Gumby", "email"=>"gumby@gmail.com", "role"=>1, "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameters: :username, :role. Context: { controller: Users::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x000000010b03fe60>, params: {"user"=>{"username"=>"Gumby", "email"=>"gumby@gmail.com", "role"=>1, "password"=>"[FILTERED]"}, "controller"=>"users/registrations", "action"=>"create", "registration"=>{"user"=>{"username"=>"Gumby", "email"=>"gumby@gmail.com", "role"=>1, "password"=>"[FILTERED]"}}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "gumby@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 3416ms (Views: 0.2ms | ActiveRecord: 9.8ms | Allocations: 11918)
+
+
+Started POST "/signup" for 127.0.0.1 at 2022-07-26 15:09:27 -0700
+Processing by Users::RegistrationsController#create as */*
+  Parameters: {"user"=>{"username"=>"Porky", "email"=>"porky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"Porky", "email"=>"porky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameters: :username, :role. Context: { controller: Users::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x000000010a6971d8>, params: {"user"=>{"username"=>"Porky", "email"=>"porky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}, "controller"=>"users/registrations", "action"=>"create", "registration"=>{"user"=>{"username"=>"Porky", "email"=>"porky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "porky@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 296ms (Views: 0.1ms | ActiveRecord: 1.7ms | Allocations: 4818)
+
+
+Started POST "/signup" for 127.0.0.1 at 2022-07-26 15:10:18 -0700
+Processing by Users::RegistrationsController#create as */*
+  Parameters: {"user"=>{"username"=>"Porky", "email"=>"porky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"Porky", "email"=>"porky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameters: :username, :role. Context: { controller: Users::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x000000010abd5168>, params: {"user"=>{"username"=>"Porky", "email"=>"porky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}, "controller"=>"users/registrations", "action"=>"create", "registration"=>{"user"=>{"username"=>"Porky", "email"=>"porky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "porky@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 330ms (Views: 0.2ms | ActiveRecord: 6.5ms | Allocations: 8733)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-07-26 15:13:26 -0700
+Processing by Users::SessionsController#create as */*
+  Parameters: {"username"=>"Blinky", "email"=>"blinky@gmail.com", "role"=>1, "password"=>"[FILTERED]", "session"=>{"username"=>"Blinky", "email"=>"blinky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}}
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 435)
+
+
+Started DELETE "/signup" for 127.0.0.1 at 2022-07-26 15:14:12 -0700
+Processing by Users::RegistrationsController#destroy as */*
+  Parameters: {"username"=>"Blinky", "email"=>"blinky@gmail.com", "role"=>1, "password"=>"[FILTERED]", "registration"=>{"username"=>"Blinky", "email"=>"blinky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 93)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (383.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "journeyman_back_end_development"[0m
+  [1m[35m (213.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "journeyman_back_end_test"[0m
+  [1m[35m (2263.1ms)[0m  [1m[35mCREATE DATABASE "journeyman_back_end_development" ENCODING = 'unicode'[0m
+  [1m[35m (228.2ms)[0m  [1m[35mCREATE DATABASE "journeyman_back_end_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "journeymen" CASCADE[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "journeymen" ("id" bigserial primary key, "name" character varying, "skill" character varying, "country" character varying, "city" character varying, "price" decimal, "journeyman_pic" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "reservations" CASCADE[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" bigserial primary key, "start_date" date, "number_days" integer, "cost" decimal, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint, "journeyman_id" bigint)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_journeyman_id" ON "reservations" ("journeyman_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "role" integer, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "jti" character varying NOT NULL)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_jti" ON "users" ("jti")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (2.4ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_176dba0b83"
+FOREIGN KEY ("journeyman_id")
+  REFERENCES "journeymen" ("id")
+[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_48a92fce51"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (40.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220726211239)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220725230321),
+(20220726162935),
+(20220726163618),
+(20220726164058),
+(20220726203727);
+
+[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-07-26 22:16:27.390696"], ["updated_at", "2022-07-26 22:16:27.390696"]]
+  [1m[36mTRANSACTION (25.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "e0f1c040fe732f80496b572805c13b93b95debe5"], ["created_at", "2022-07-26 22:16:27.424690"], ["updated_at", "2022-07-26 22:16:27.424690"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "journeymen" CASCADE[0m
+  [1m[35m (19.8ms)[0m  [1m[35mCREATE TABLE "journeymen" ("id" bigserial primary key, "name" character varying, "skill" character varying, "country" character varying, "city" character varying, "price" decimal, "journeyman_pic" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "reservations" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" bigserial primary key, "start_date" date, "number_days" integer, "cost" decimal, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "user_id" bigint, "journeyman_id" bigint)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_journeyman_id" ON "reservations" ("journeyman_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "role" integer, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "jti" character varying NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_jti" ON "users" ("jti")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_176dba0b83"
+FOREIGN KEY ("journeyman_id")
+  REFERENCES "journeymen" ("id")
+[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_48a92fce51"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220726211239)[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220725230321),
+(20220726162935),
+(20220726163618),
+(20220726164058),
+(20220726203727);
+
+[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-07-26 22:16:27.569102"], ["updated_at", "2022-07-26 22:16:27.569102"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2022-07-26 22:16:27.575414"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "e0f1c040fe732f80496b572805c13b93b95debe5"], ["created_at", "2022-07-26 22:16:27.581339"], ["updated_at", "2022-07-26 22:16:27.581339"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "GlumpPunk09"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "BillyBoy10"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.7ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Raul"], ["skill", "carpenter"], ["country", "Mexico"], ["city", "Tijuana"], ["price", "110.0"], ["journeyman_pic", "thisPic123"], ["created_at", "2022-07-26 22:16:28.348300"], ["updated_at", "2022-07-26 22:16:28.348300"]]
+  [1m[36mTRANSACTION (40.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJourneyman Create (0.3ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Gubber"], ["skill", "electrician"], ["country", "USA"], ["city", "San Diego"], ["price", "90.0"], ["journeyman_pic", "thatPic123"], ["created_at", "2022-07-26 22:16:28.394352"], ["updated_at", "2022-07-26 22:16:28.394352"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.3ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (52.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7702323232564939545)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mJourneyman Load (0.6ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen"[0m
+Started POST "/signup" for 127.0.0.1 at 2022-07-26 15:19:45 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Users::RegistrationsController#create as */*
+  Parameters: {"user"=>{"username"=>"Blinky", "email"=>"blinky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"Blinky", "email"=>"blinky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameters: :username, :role. Context: { controller: Users::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x0000000108e9d1e0>, params: {"user"=>{"username"=>"Blinky", "email"=>"blinky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}, "controller"=>"users/registrations", "action"=>"create", "registration"=>{"user"=>{"username"=>"Blinky", "email"=>"blinky@gmail.com", "role"=>1, "password"=>"[FILTERED]"}}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "blinky@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "role", "password", "created_at", "updated_at", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "jti") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["username", nil], ["role", nil], ["password", "[FILTERED]"], ["created_at", "2022-07-26 22:19:46.293057"], ["updated_at", "2022-07-26 22:19:46.293057"], ["email", "blinky@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["jti", "af0a5ba0-27ec-4e85-9b65-2f8d79d15ca8"]]
+  [1m[36mTRANSACTION (38.0ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 516ms (Views: 0.4ms | ActiveRecord: 46.6ms | Allocations: 18567)
+
+
+Started POST "/reservations" for 127.0.0.1 at 2022-07-26 15:22:48 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/reservations"):
+  
+Started POST "/v1/reservations" for 127.0.0.1 at 2022-07-26 15:23:08 -0700
+Processing by V1::ReservationsController#create as JSON
+  Parameters: {"reservation"=>{"user_id"=>1, "journeyman_id"=>2, "start_date"=>"07 Sep 2022 21:20:49.262680000", "number_days"=>5}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.4ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/reservations_controller.rb:22:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:22:in `create'
+  [1m[36mReservation Create (1.2ms)[0m  [1m[32mINSERT INTO "reservations" ("start_date", "number_days", "cost", "created_at", "updated_at", "user_id", "journeyman_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["start_date", "2022-09-07"], ["number_days", 5], ["cost", "450.0"], ["created_at", "2022-07-26 22:23:08.548136"], ["updated_at", "2022-07-26 22:23:08.548136"], ["user_id", 1], ["journeyman_id", 2]]
+  ↳ app/controllers/v1/reservations_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (38.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/v1/reservations_controller.rb:22:in `create'
+Completed 200 OK in 226ms (Views: 0.4ms | ActiveRecord: 47.5ms | Allocations: 16740)
+
+
+Started POST "/v1/journeymen" for 127.0.0.1 at 2022-07-26 15:26:54 -0700
+Processing by V1::JourneymenController#create as JSON
+  Parameters: {"Journeyman"=>{"name"=>"Glenn", "skill"=>"Plumbing", "country"=>"Ukraine", "city"=>"Kiev", "price"=>200, "journeyman_pic"=>"thisthatPic123"}, "journeyman"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 400 Bad Request in 5ms (ActiveRecord: 0.8ms | Allocations: 1580)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: journeyman
+Did you mean?  Journeyman):
+  
+app/controllers/v1/journeymen_controller.rb:42:in `journeyman_params'
+app/controllers/v1/journeymen_controller.rb:19:in `create'
+Started POST "/v1/journeymen" for 127.0.0.1 at 2022-07-26 15:27:16 -0700
+Processing by V1::JourneymenController#create as JSON
+  Parameters: {"journeyman"=>{"name"=>"Glenn", "skill"=>"Plumbing", "country"=>"Ukraine", "city"=>"Kiev", "price"=>200, "journeyman_pic"=>"thisthatPic123"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:21:in `create'
+  [1m[36mJourneyman Create (0.5ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Glenn"], ["skill", "Plumbing"], ["country", "Ukraine"], ["city", "Kiev"], ["price", "200.0"], ["journeyman_pic", "thisthatPic123"], ["created_at", "2022-07-26 22:27:16.774770"], ["updated_at", "2022-07-26 22:27:16.774770"]]
+  ↳ app/controllers/v1/journeymen_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (41.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:21:in `create'
+Completed 200 OK in 50ms (Views: 0.8ms | ActiveRecord: 42.4ms | Allocations: 3665)
+
+
+Started GET "/v1/journeymen" for 127.0.0.1 at 2022-07-26 15:27:26 -0700
+Processing by V1::JourneymenController#index as JSON
+  Parameters: {"journeyman"=>{"name"=>"Glenn", "skill"=>"Plumbing", "country"=>"Ukraine", "city"=>"Kiev", "price"=>200, "journeyman_pic"=>"thisthatPic123"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.5ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen"[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:5:in `index'
+Completed 200 OK in 22ms (Views: 0.1ms | ActiveRecord: 0.9ms | Allocations: 2443)
+
+
+Started GET "/v1/reservations" for 127.0.0.1 at 2022-07-26 15:27:39 -0700
+Processing by V1::ReservationsController#index as JSON
+  Parameters: {"journeyman"=>{"name"=>"Glenn", "skill"=>"Plumbing", "country"=>"Ukraine", "city"=>"Kiev", "price"=>200, "journeyman_pic"=>"thisthatPic123"}, "reservation"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  ↳ app/controllers/v1/reservations_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 1991)
+
+
+Started GET "/v1/reservations/1" for 127.0.0.1 at 2022-07-26 15:27:54 -0700
+Processing by V1::ReservationsController#show as JSON
+  Parameters: {"journeyman"=>{"name"=>"Glenn", "skill"=>"Plumbing", "country"=>"Ukraine", "city"=>"Kiev", "price"=>200, "journeyman_pic"=>"thisthatPic123"}, "id"=>"1", "reservation"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:9:in `show'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 1966)
+
+
+Started GET "/v1/journeymen/3" for 127.0.0.1 at 2022-07-26 15:28:22 -0700
+Processing by V1::JourneymenController#show as JSON
+  Parameters: {"journeyman"=>{"name"=>"Glenn", "skill"=>"Plumbing", "country"=>"Ukraine", "city"=>"Kiev", "price"=>200, "journeyman_pic"=>"thisthatPic123"}, "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/v1/journeymen_controller.rb:9:in `show'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 1928)
+
+
+Started DELETE "/v1/journeymen/3" for 127.0.0.1 at 2022-07-26 15:28:32 -0700
+Processing by V1::JourneymenController#destroy as JSON
+  Parameters: {"journeyman"=>{"name"=>"Glenn", "skill"=>"Plumbing", "country"=>"Ukraine", "city"=>"Kiev", "price"=>200, "journeyman_pic"=>"thisthatPic123"}, "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.2ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen" WHERE "journeymen"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/v1/journeymen_controller.rb:29:in `destroy'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:34:in `destroy'
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."journeyman_id" = $1[0m  [["journeyman_id", 3]]
+  ↳ app/controllers/v1/journeymen_controller.rb:34:in `destroy'
+  [1m[36mJourneyman Destroy (1.2ms)[0m  [1m[31mDELETE FROM "journeymen" WHERE "journeymen"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/v1/journeymen_controller.rb:34:in `destroy'
+  [1m[36mTRANSACTION (40.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:34:in `destroy'
+Completed 200 OK in 111ms (Views: 0.1ms | ActiveRecord: 43.1ms | Allocations: 6301)
+
+
+Started DELETE "/v1/journeymen/" for 127.0.0.1 at 2022-07-26 15:28:37 -0700
+  
+ActionController::RoutingError (No route matches [DELETE] "/v1/journeymen"):
+  
+Started GET "/v1/journeymen/" for 127.0.0.1 at 2022-07-26 15:28:44 -0700
+Processing by V1::JourneymenController#index as JSON
+  Parameters: {"journeyman"=>{"name"=>"Glenn", "skill"=>"Plumbing", "country"=>"Ukraine", "city"=>"Kiev", "price"=>200, "journeyman_pic"=>"thisthatPic123"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJourneyman Load (0.4ms)[0m  [1m[34mSELECT "journeymen".* FROM "journeymen"[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:5:in `index'
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 2108)
+
+
+Started POST "/v1/journeymen/" for 127.0.0.1 at 2022-07-26 15:28:56 -0700
+Processing by V1::JourneymenController#create as JSON
+  Parameters: {"journeyman"=>{"name"=>"Glenn", "skill"=>"Plumbing", "country"=>"Ukraine", "city"=>"Kiev", "price"=>200, "journeyman_pic"=>"thisthatPic123"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:21:in `create'
+  [1m[36mJourneyman Create (0.3ms)[0m  [1m[32mINSERT INTO "journeymen" ("name", "skill", "country", "city", "price", "journeyman_pic", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Glenn"], ["skill", "Plumbing"], ["country", "Ukraine"], ["city", "Kiev"], ["price", "200.0"], ["journeyman_pic", "thisthatPic123"], ["created_at", "2022-07-26 22:28:56.121713"], ["updated_at", "2022-07-26 22:28:56.121713"]]
+  ↳ app/controllers/v1/journeymen_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (61.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/v1/journeymen_controller.rb:21:in `create'
+Completed 200 OK in 69ms (Views: 0.1ms | ActiveRecord: 62.0ms | Allocations: 3278)
+
+
+Started GET "/v1/reservations" for 127.0.0.1 at 2022-07-26 15:29:29 -0700
+Processing by V1::ReservationsController#index as JSON
+  Parameters: {"journeyman"=>{"name"=>"Glenn", "skill"=>"Plumbing", "country"=>"Ukraine", "city"=>"Kiev", "price"=>200, "journeyman_pic"=>"thisthatPic123"}, "reservation"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  ↳ app/controllers/v1/reservations_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 1848)
+
+
+Started DELETE "/v1/reservations/1" for 127.0.0.1 at 2022-07-26 15:29:38 -0700
+Processing by V1::ReservationsController#destroy as JSON
+  Parameters: {"journeyman"=>{"name"=>"Glenn", "skill"=>"Plumbing", "country"=>"Ukraine", "city"=>"Kiev", "price"=>200, "journeyman_pic"=>"thisthatPic123"}, "id"=>"1", "reservation"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/reservations_controller.rb:35:in `destroy'
+  [1m[36mReservation Destroy (0.3ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/v1/reservations_controller.rb:35:in `destroy'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/v1/reservations_controller.rb:35:in `destroy'
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 1.4ms | Allocations: 3171)
+
+
+Started DELETE "/v1/reservations/" for 127.0.0.1 at 2022-07-26 15:29:42 -0700
+  
+ActionController::RoutingError (No route matches [DELETE] "/v1/reservations"):
+  
